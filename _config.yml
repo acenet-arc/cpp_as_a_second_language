@@ -1,0 +1,92 @@
+#------------------------------------------------------------
+# Values for this lesson.
+#------------------------------------------------------------
+
+# Overall title for pages.
+title: "CPP as a second language"
+
+# Contact email address.
+email: chris.geroux@ace-net.ca
+
+#------------------------------------------------------------
+# Generic settings (should not need to change).
+#------------------------------------------------------------
+
+# What kind of thing is this ("workshop" or "lesson")?
+kind: "lesson"
+
+# Magic to make URLs resolve both locally and on GitHub.
+# See https://help.github.com/articles/repository-metadata-on-github-pages/.
+repository: cgeroux/cpp_as_a_second_language
+
+# Sites.
+#amy_site: "https://amy.software-carpentry.org/workshops"
+#dc_site: "http://datacarpentry.org"
+#swc_github: "https://github.com/swcarpentry"
+#swc_site: "https://software-carpentry.org"
+#swc_pages: "https://swcarpentry.github.io"
+#template_repo: "https://github.com/swcarpentry/styles"
+#example_repo: "https://github.com/swcarpentry/lesson-example"
+#example_site: "https://swcarpentry.github.com/lesson-example"
+#workshop_repo: "https://github.com/swcarpentry/workshop-template"
+#workshop_site: "https://swcarpentry.github.io/workshop-template"
+#training_site: "https://swcarpentry.github.io/instructor-training"
+
+# Surveys.
+#pre_survey: "https://www.surveymonkey.com/r/swc_pre_workshop_v1?workshop_id="
+#post_survey: "https://www.surveymonkey.com/r/swc_post_workshop_v1?workshop_id="
+
+# Start time in minutes (0 to be clock-independent, 540 to show a start at 09:00 am)
+start_time: 615
+
+# Specify that things in the episodes collection should be output.
+collections:
+  episodes:
+    output: true
+    permalink: /:path/
+  extras:
+    output: true
+  projects:
+    output: true
+
+# Set the default layout for things in the episodes collection.
+defaults:
+  - values:
+      root: ..
+  - scope:
+      path: ""
+      type: episodes
+    values:
+      layout: episode
+
+# Files and directories that are not to be copied.
+exclude:
+  - Makefile
+  - bin
+
+episode_order: 
+  - introduction
+  - cpp_overview
+  - first_cpp_program
+  - namespaces
+# - create-a-persistent-virtual-machine
+#  - intro-to-jekyll
+#  - install-mysql
+#  - install-php
+#  - SSL-encryption
+#  - create-a-wordpress-site
+#  - os-command-line-setup
+#  - os-command-line-client
+#  - intro-to-cloud-init
+#  - bash-cloud-init
+#  - yaml-syntax
+#  - wo-cloud-init
+#  - using-hots
+#  - creating-hots
+#  - your-project-I
+#  - your-project-II
+#  - your-project-III
+  
+# Turn off built-in syntax highlighting.
+highlighter: false
+
