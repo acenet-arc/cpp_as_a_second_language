@@ -34,24 +34,7 @@ class Vector{
 public:
   int size;
   int* data;
-  Vector(){
-    size=1;
-    data=new int[size];
-  }
-  Vector(int size_in){
-    size=size_in;
-    data=new int[size];
-  }
-  Vector(const Vector& vec_in){
-    size=vec_in.size;
-    data=new int[size];
-    for(int i=0;i<vec_in.size;++i){
-      data[i]=vec_in.data[i];
-    }
-  }
-  ~Vector(){
-    delete [] data;
-  }
+  
   Vector operator+(Vector& rhs){
     Vector temp(size+rhs.size);
     int tempIndex;
@@ -65,28 +48,13 @@ public:
     }
     return temp;
   }
-  void display(){
-    display(size);
-  }
-  void display(int num){
-
-    int numToDisplay=size;
-    if(num<size){
-      numToDisplay=num;
-    }
-
-    std::cout<<"Vector: size="<<size;
-    std::cout<<", contents=(";
-    for(int i=0;i<numToDisplay-1;++i){
-      std::cout<<data[i]<<",";
-    }
-    if(numToDisplay<size){
-      std::cout<<data[numToDisplay-1]<<"...)\n";
-    }
-    else{
-      std::cout<<data[numToDisplay-1]<<")\n";
-    }
-  }
+  
+  ~Vector(){...}
+  Vector(){...}
+  Vector(int size_in){...}
+  Vector(const Vector& vec_in){...}
+  void display(){...}
+  void display(int num){...}
 };
 
 int main(){
@@ -117,12 +85,64 @@ Vector: size=20, contents=(0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,0,10,15)
 {: .output}
 As we can see it added the two vectors together, with `a` preceding `b`.
 
-Some operators can be declared as class member functions and some must be declared outside the class and some can be declared either way depending on how we want to use them. There are quite a few different operators, combining those with the different constructors, different data types, and how the operators work together can lead to quite a few different ways to create operators and you can really spend a lot of time trying to create operators to cover all the possible ways you might want to use operators with your class.
-
-**Be careful not to spend too much time written code you might not need**.
+Some operators can be declared as class member functions and some must be declared outside the class and some can be declared either way depending on how we want to use them. There are quite a few different operators, combining those with the different constructors, different data types, and how the operators work together can lead to quite a few different ways to create operators and you can really spend a lot of time trying to create operators to cover all the possible ways you might want to use operators with your class. **Be careful not to spend too much time written code you might not need**.
 
 For a list of operators and where each can be declared see:
 [https://www.cplusplus.com/doc/tutorial/templates/](https://www.cplusplus.com/doc/tutorial/templates/)
+
+## operator=
+We have so far used the `+` operator we defined like so, `Vector a,b; Vector c=a+b;`, however if we wanted to use it this way `Vector a,b,c; c=a+b;` we would have an issue. So far we have been relying on our copy constructor which gets called when we do `Vector c=`some other vector, however when we do `c=a+b` it will invoke the compiler created assignment operator (`operator=`) which will just copy our pointers over. Then when the destructors gets called for the two `Vector` objects with the same pointer it will cause a double free error. This exactly the same thing that would happen if we didn't create our copy constructor for exactly the same reason. Lets add an assignment operator now.
+~~~
+#include <iostream>
+
+class Vector{
+public:
+  int size;
+  int* data;
+  
+  void operator=(Vector rhs){
+    if(&rhs!=this){
+      
+      delete[] data;
+      data=new int[rhs.size];
+      size=rhs.size;
+      for(int i=0;i<rhs.size;++i){
+        data[i]=rhs.data[i];
+      }
+    }
+  }
+  
+  Vector operator+(Vector& rhs){...}
+  ~Vector(){...}
+  Vector(){...}
+  Vector(int size_in){...}
+  Vector(const Vector& vec_in){...}
+  void display(){...}
+  void display(int num){...}
+};
+
+int main(){
+  Vector a(10);
+  a.data[9]=15;
+  Vector b=a;
+  b.data[8]=10;
+  a.display();
+  b.display();
+  Vector c=a+b;
+  c.display();
+}
+~~~
+
+Notice that we check to see if the rhs has the same address as the current object (self assignment `a=a`), if so there is nothing to do. If we didn't do this check we would delete our data and then try to assign the new data to the new uninitialized data to itself, this doesn't seem like a good thing to do.
+
+
+## Rule of Three
+The Rule of Three is a general rule that states, if any one of the three following class member functions are defined, then they should all be defined.
+* Destructor
+* Copy constructor
+* Assignment operator
+
+In our case we saw why that is. We allocated memory in our constructor and when we created a new object from a previous object either using the compiler created `=` operator or copy constructor, we ended up with a double free when our destructor was called. The compiler created copy constructor and assignment operator only copied the pointer to the data, they didn't allocate the objects own memory and copy values over from the other object.
 
 > ## Mixing types with operators
 > You can add additional overloaded versions of an operator to allow different types to be added together. For example if we wanted to be able to add an `Vector` object and an `int` we could add the following member function to our `Vector` class:
@@ -158,22 +178,4 @@ For a list of operators and where each can be declared see:
 >   return temp;
 > }
 > ~~~
-{: .callout}
-
-> ## operator=
-> We have so far used the `+` operator we defined like so, `Vector a,b; Vector c=a+b;`, however if we wanted to use it this way `Vector a,b,c; c=a+b;` we would have an issue. So far we have been relying on our copy constructor which gets called when we do `Vector c=`some other vector, however when we do `c=a+b` it will invoke the compiler created assignment operator (`operator=`) which will just copy our pointers over. Then when the destructors get called for the two `Vector` objects with the same pointer it will cause a double free error again like we got before we created our copy constructor for exactly the same reason. We then would need to add an assignement operator like below.
-> ~~~
-> void operator=(Vector rhs){
->   if(&rhs!=this){
->   
->     delete[] data;
->     data=new int[rhs.size];
->     size=rhs.size;
->     for(int i=0;i<rhs.size;++i){
->       data[i]=rhs.data[i];
->     }
->   }
-> }
-> ~~~
-> Notice that we check to see if the rhs has the same address as the current object (self assignment), if so there is nothing to do. Otherwise we would delete our data and then try to assign the new data to the new uninitialized data to itself, this doesn't seem like a good thing to do.
 {: .callout}

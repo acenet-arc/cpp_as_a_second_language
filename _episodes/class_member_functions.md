@@ -30,6 +30,7 @@ class Vector{
 public:
   int size;
   int* data;
+  
   void display(){
     std::cout<<"Vector: size="<<size;
     std::cout<<", contents=(";
@@ -38,6 +39,7 @@ public:
     }
     std::cout<<data[size-1]<<")\n";
   }
+  
 };
 
 int main(){
@@ -96,7 +98,6 @@ Note I used the `->` operator which acts like the `.` operator but works when yo
 ## Function overloading
 It might be nice to not always have a way to display only part of our vector, particularly if it is long.
 
-
 Function overloading allows you to declare multiple functions with the same name that are distinguished by the type and number of parameters passed to the function. We could overload our display function to take an extra `int` argument to maybe indicate how many elements we want it to output.
 ~~~
 $ cp member_functions.cpp function_overload.cpp
@@ -110,11 +111,8 @@ class Vector{
 public:
   int size;
   int* data;
-  void display(){
-    display(size);
-  }
+  
   void display(int num){
-    
     int numToDisplay=size;
     if(num<size){
       numToDisplay=num;
@@ -131,7 +129,9 @@ public:
     else{
       std::cout<<data[numToDisplay-1]<<")\n";
     }
-    
+  }
+  void display(){
+    display(size);
   }
 };
 
@@ -149,12 +149,10 @@ To avoid having two functions with fairly similar duplicate code, we also now ca
 
 We can now distinguish between which of these two function we wish to call, by either including an `int` parameter or not in the function call, e.g.
 ~~~
-A a;
 a.display();
 ~~~
 vrs.
 ~~~
-A a;
 a.display(5);
 ~~~
 
@@ -174,20 +172,18 @@ The elements 0-8 are zeros, but we didn't set them to zero. C and also C++ don't
 
 Function overloading works not just for class member functions, but also for regular independent functions.
 
-> ## The `this` keyword
-> There is a special keyword that can be used in class member functions `this`, which is a pointer to the class object that the function was invoked from (e.g. the `a` object in the `a.display();` line). We could have written our class member function like this:
-> ~~~
-> class A{
-> public:
->   int foo;
->   void display(){
->     std::cout<<"foo="<<this->foo<<"\n";
->   }
-> };
-> ~~~
-> 
-> You might like to use the `this` keyword to make it clear when you are and aren't referencing the class object, but it isn't needed.
-{: .callout}
+## The `this` keyword
+There is a special keyword that can be used in class member functions `this`, which is a pointer to the class object that the function was invoked from (e.g. the `a` object in the `a.display();` line). We could have written our class member function like this:
+~~~
+class A{
+public:
+  int foo;
+  void display(){
+    std::cout<<"foo="<<this->foo<<"\n";
+  }
+};
+~~~
+You might like to use the `this` keyword to make it clear when you are and aren't referencing the class object, but it isn't needed in this example.
 
 > ## Separating declarations and definitions
 > 

@@ -44,7 +44,9 @@ $ nano constuctor.cpp
 ~~~
 {: .bash}
 
-and then add the three types of constructors
+and then add the three types of constructors. 
+
+Note that the `...` in the lines `void display(){...}` and `void display(int num){...}` below are used to indicate that there is still code in those functions but we aren't showing them to improve readability and help highlight the changes we made.
 
 ~~~
 #include <iostream>
@@ -70,28 +72,8 @@ public:
     }
   }
   
-  void display(){
-    display(size);
-  }
-  void display(int num){
-    
-    int numToDisplay=size;
-    if(num<size){
-      numToDisplay=num;
-    }
-    
-    std::cout<<"Vector: size="<<size;
-    std::cout<<", contents=(";
-    for(int i=0;i<numToDisplay-1;++i){
-      std::cout<<data[i]<<",";
-    }
-    if(numToDisplay<size){
-      std::cout<<data[numToDisplay-1]<<"...)\n";
-    }
-    else{
-      std::cout<<data[numToDisplay-1]<<")\n";
-    }
-  }
+  void display(){...}
+  void display(int num){...}
 };
 
 int main(){
@@ -116,17 +98,16 @@ Vector: size=10, contents=(0,0,0,0,0,0,0,0,0,15)
 Vector: size=10, contents=(0,0,0,0,0,0,0,0,10,15)
 ~~~
 {: .output}
-Above we have added all three constructor types `Vector()`, `Vector(int size_in)`, and `Vector()`. We also moved the allocation of the member `data` into the constructors.
+Above we have added all three constructor types `Vector()`, `Vector(int size_in)`, and `Vector(const Vector& vec_in)`. We also moved the allocation of the member `data` into the constructors.
 
 The `const` keyword used in the copy constructor indicates that we will not modify the `vec_in` object within the copy constructor, which is actually a requirement of the copy constructor.
 
 As you can see from the output our two `Vectors` `a` and `b` have completely independent memory in which to store their data and that the `15` stored in the last element of `a` was copied over to the `b` vector.
 
-> ## When is a copy constructor called
-> A copy constructor is invoked in a statement like `A a; A b=a;` However, it isn't used in the following situation `A a; A b; b=a;` instead the `=` operator is used. We will learn more about that in the next lesson.
-{: .callout}
-
 If we use the default constructor for our `Vector` class (e.g. `Vector a;`) we will get a vector of `size=1`, if we use the parameterized constructor (`Vector a(15);`) we will get a vector of the size we specify.
+
+### When is a copy constructor called
+A copy constructor is invoked in a statement like `A a; A b=a;` However, it isn't used in the following situation `A a; A b; b=a;` instead the `=` operator is used. We will learn more about the `=` operator in the next lesson.
 
 > ## Initializer lists
 > You can also use an initializer list in your constructor, as shown below to initialize class member variables.
@@ -166,47 +147,16 @@ class Vector{
 public:
   int size;
   int* data;
-
-  Vector(){
-    size=1;
-    data=new int[size];
-  }
-  Vector(int size_in){
-    size=size_in;
-    data=new int[size];
-  }
-  Vector(const Vector& vec_in){
-    size=vec_in.size;
-    data=new int[size];
-    for(int i=0;i<vec_in.size;++i){
-      data[i]=vec_in.data[i];
-    }
-  }
+  
   ~Vector(){
     delete [] data;
   }
-  void display(){
-    display(size);
-  }
-  void display(int num){
-
-    int numToDisplay=size;
-    if(num<size){
-      numToDisplay=num;
-    }
-
-    std::cout<<"Vector: size="<<size;
-    std::cout<<", contents=(";
-    for(int i=0;i<numToDisplay-1;++i){
-      std::cout<<data[i]<<",";
-    }
-    if(numToDisplay<size){
-      std::cout<<data[numToDisplay-1]<<"...)\n";
-    }
-    else{
-      std::cout<<data[numToDisplay-1]<<")\n";
-    }
-  }
+  
+  Vector(){...}
+  Vector(int size_in){...}
+  Vector(const Vector& vec_in){...}
+  void display(){...}
+  void display(int num){...}
 };
 
 int main(){
@@ -218,7 +168,7 @@ int main(){
   b.display();
 }
 ~~~
-Here we have added the desctructor `~Vector()` which deallocates the memory allocated by the constructor. We no longer need to worry about allocating and deallocating memory where we create our vector objects, it happens automatically when we declare them and when they go out of scope.
+Here we have added the destructor `~Vector()` which deallocates the memory allocated by the constructor. We no longer need to worry about allocating and deallocating memory where we create our vector objects, it happens automatically when we declare them and when they go out of scope.
 ~~~
 $ g++ destructor.cpp -o destructor
 $ ./destructor

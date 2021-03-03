@@ -93,3 +93,23 @@ a[9]=15
 ~~~
 {: .output}
 Because we used the `new[]` version we must use the `delete[]` version to match it. Notice that we don't have to tell it the size of the array, this information is tract for us.
+
+> ## Debug tools
+> It is possible to use a tool to help find bugs in your code. These tools usually let you inspect the values of variables in your code, step through execution line by line, set beak points in your code to stop execution and let you examine variables. They will also help in detecting some memory issues like accessing memory your program doesn't have access to (e.g. Segmentation faults) and stop on the line where it occurs.
+> ### gdb
+> One such tool is `gdb` the GNU debugger. It can be used from the command line.
+> To use it you first need to compile your code including the `-g` option.
+> ~~~
+> $ g++ -g memory.cpp -o memory
+> ~~~
+> {: .bash}
+> Then run the newly created executable using `gdb`.
+> ~~~
+> $ gdb memory
+> ~~~
+> {: .bash}
+> You can the type `help` to show information about how to use `gdb`. For more details see: [gdb documentation](https://www.gnu.org/software/gdb/documentation/).
+> 
+> ### Valgrind
+> Is a collection of useful tools which allows checking for memory errors, performance profiling, and more. See [valgrind.org](https://valgrind.org/) for more information.
+{: .callout}
