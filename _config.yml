@@ -68,7 +68,15 @@ episode_order:
   - introduction
   - cpp_overview
   - first_cpp_program
-  - namespaces
+  - memory
+  - classes
+  - class_member_functions
+  - constructors_and_destructors
+  - operator_overloading
+  - inheritance
+  - virtual_functions
+  - abstract_classes
+  - templates
 # - create-a-persistent-virtual-machine
 #  - intro-to-jekyll
 #  - install-mysql
