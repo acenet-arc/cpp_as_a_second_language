@@ -4,10 +4,9 @@ title: Setup
 permalink: /setup/
 ---
 
-We will be working on a Compute Canada (CC) or virtual cluster with all the tools we will need already installed. You will need a method of connecting to either a CC cluster, or our virtual cluster, which means you will need a method of connection to them using [SSH](https://docs.computecanada.ca/wiki/SSH).
+We will be working on a Compute Canada (CC) or virtual cluster with all the tools we will need already installed. You will need a method of connecting to either a CC cluster, or our virtual cluster, which means you will need a method of connecting to them using [SSH](https://docs.computecanada.ca/wiki/SSH).
 
 ## Getting a Compute Canada account
-
 Before arriving for the course, if you can, it is strongly recommended to get a Compute Canada account. Getting a Compute Canada account usually takes a few business days. Ensuring you have a Compute Canada account at least a week before the course begins is recommended.
 
 ### To get a Compute Canada account
@@ -19,7 +18,6 @@ If you would like a Compute Canada account but are having difficulty getting one
 For those who are unable to acquire a Compute Canada account we will provide a virtual cluster that you can use during the course. However, having your own CC account is preferable as you may continue to use it after the course has completed.
 
 ## Ensure you can open a terminal
-
 The only setup required on your laptop is ensuring you can open a Linux command line terminal.
 
 ### Windows
