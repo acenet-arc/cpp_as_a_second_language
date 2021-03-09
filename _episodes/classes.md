@@ -40,6 +40,7 @@ int main(){
   a.data[9]=15;
   std::cout<<"a.size="<<a.size<<"\n";
   std::cout<<"a.data[9]="<<a.data[9]<<"\n";
+  delete[] a.data;
 }
 ~~~
 Here we have put the variable `size` and the array `a` renamed to `data` into our new `Vector` class. We have also used the `.` operator to access the classes `public` members.

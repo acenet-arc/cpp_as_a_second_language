@@ -1,6 +1,6 @@
 ---
 layout: episode
-title: "Constructors and Destructors"
+title: "Constructors and destructors"
 teaching: 10
 exercises: 10
 questions:
@@ -13,7 +13,7 @@ keypoints:
 - ""
 ---
 
-We are still allocating and deallocating the memory for our Vector in the main function, however it would be nice to move this into the class so we don't have to think about it where we use our Vector. The best way to do this is to use Constructors and Destructors.
+We are still allocating and deallocating the memory for our Vector in the main function, however it would be nice to move this into the class so we don't have to think about it where we use our Vector. The best way to do this is to use constructors and destructors.
 
 Constructors and destructors are special member functions that are called automatically when an object is created or destroyed. Objects are destroyed when they go out of scope, think execution moves outside of the set of curly braces `{...}` where the object was declared.
 

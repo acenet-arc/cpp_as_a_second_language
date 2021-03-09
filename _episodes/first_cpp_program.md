@@ -1,7 +1,7 @@
 ---
 layout: episode
 title: "First C++ program"
-teaching: 10
+teaching: 5
 exercises: 5
 questions:
 - "How do you create a C++ program?"
