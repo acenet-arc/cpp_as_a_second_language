@@ -67,16 +67,16 @@ Hello, world!
 > ## Nano line numbers
 > When compiling programs a compiler usually reports errors it encounters by line number so it is particularly important to be able to find a particular line in your editor.
 >
-> There are a couple ways that nano can display line number/column information.
+> There are a couple ways that nano can display line number/column information. Which methods are available will depend on your version of Nano.
 > <ol>
 > <li markdown="1">
-> Line numbers can be toggled on/off using `alt`+`shift`+`#`
+> While in nano press `alt`+`c` to display line number and column information for the line the cursor is currently on. This works for this particular nano session and on the version of nano on our **training cluster**.
 > </li>
 > <li markdown="1">
-> When starting nano the `-l` option can be used to tell nano to display line numbers along the left hand side.
+> Line numbers can be toggled on/off using `alt`+`shift`+`#`. This is nice, but only works on newer versions of nano.
 > </li>
 > <li markdown="1">
-> While in nano press `alt`+`c` to display line number and column information for the line the cursor is currently on. This work for this particular nano session.
+> When starting nano the `-l` option can be used to tell nano to display line numbers along the left hand side. Again only works with newer versions of nano.
 > </li>
 > <li markdown="1">
 > Tell nano to always display line numbers and current line information:
@@ -89,6 +89,7 @@ Hello, world!
 > set linenumbers
 > set constantshow
 > ~~~
+> Note that `set linenumbers` will only work on newer versions of nano while `set constantshow` will work on older versions of nano also.
 > </li>
 > </ol>
 {: .callout}
@@ -111,3 +112,30 @@ Hello, world!
 > </li>
 > </ul>
 {: .callout}
+
+> ## What is a class?
+> Is a class:<br/>
+> <ol type="a">
+> <li markdown="1">
+> a variable which can have multiple members like a struct
+> </li>
+> <li markdown="1">an object which can have multiple members like a struct
+> </li>
+> <li markdown="1">a datatype which can have multiple members like a struct
+> </li>
+> <li markdown="1">a datatype which can have only a single value like `int`,`float`,etc.
+> </li>
+> </ol>
+> > ## Solution
+> > <ol type="a">
+> > <li markdown="1">**NO**: while a class can have multiple members like a struct, a class defines a new datatype where as a variable or object are the instantiation of that class or datatype.
+> > </li>
+> > <li markdown="1">**NO**: while an object has a class type, the object is not the class its self.
+> > </li>
+> > <li markdown="1">**Yes**: a class is a kind of datatype that can have multiple members.
+> > </li>
+> > <li markdown="1">**No**: classes can have multiple members, it is possible that they only have one member but they are not restricted to holding a single value.
+> > </li>
+> > </ol>
+> {: .solution}
+{: .challenge}

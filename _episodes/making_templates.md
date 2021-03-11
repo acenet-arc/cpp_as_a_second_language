@@ -72,3 +72,7 @@ I may or may not want to talk about these other aspects of templates, probably w
 * Class Templates
 * Template specialization
 * Non-type parameters
+
+## Further fairly important topics in C/C++
+* [fstream](http://www.cplusplus.com/reference/fstream/) (file input/output)
+* [assert](http://www.cplusplus.com/reference/cassert/assert/) (very good programming practice, not just a C++ topic but also a C topic)
