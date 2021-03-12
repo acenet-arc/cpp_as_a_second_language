@@ -44,6 +44,7 @@ $ nano memory.cpp
 
 and then modify it to look like the following:
 
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -54,6 +55,9 @@ int main(){
   std::cout<<"a[9]="<<a[9]<<"\n";
 }
 ~~~
+[memory.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/memory_allocate.cpp)
+</div>
+
 ~~~
 $ g++ memory.cpp -o memory
 $ ./memory
@@ -72,6 +76,8 @@ Generally it is a good idea to match every `new` and `new[]` allocation with a m
 
 ## Deallocation
 To deallocate or free memory in `C` the `free` function is used, however, in C++ you should use the `delete` operator instead. It also comes in two flavors `delete` and `delete[]` to match the two flavors of `new` and `new[]`. Lets free the memory we allocated above.
+
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -83,6 +89,9 @@ int main(){
   delete[] a;
 }
 ~~~
+[memory.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/memory_deallocate.cpp)
+</div>
+
 ~~~
 $ g++ memory.cpp -o memory
 $ ./memory

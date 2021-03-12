@@ -23,6 +23,7 @@ $ nano stl_vector.cpp
 ~~~
 {: .bash}
 
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 #include <vector>
@@ -42,6 +43,8 @@ int main(){
   displayVector(&a);
 }
 ~~~
+[stl_vector.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/stl_vector.cpp)
+</div>
 From looking at the [standard template library reference](https://www.cplusplus.com/reference/stl/) we can see that it has a `push_back` member function, which allows us to add new items to the end of the vector. It has an `operator[]` which allows us to access items within the vector. Finally it has a `size` member function which lets us know how big the vector is.
 
 ~~~

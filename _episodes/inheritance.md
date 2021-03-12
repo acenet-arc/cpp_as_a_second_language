@@ -30,6 +30,7 @@ Types of inheritance:
 
 For more details about types of inheritance see this [cppreference.com](https://en.cppreference.com/w/cpp/language/derived_class) page.
 
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -48,6 +49,8 @@ int main(){
   p0.display();
 }
 ~~~
+[inheritance.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/inheritance.cpp)
+</div>
 Our new `Vec3` class can be thought of as a combination of the two class declarations. First the original `Vector` class, then with the changes added for the `Vec3` class.
 
 ~~~
@@ -68,6 +71,7 @@ $ nano inheritance.cpp
 ~~~
 {: .bash}
 
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -86,6 +90,8 @@ int main(){
   a.display();
 }
 ~~~
+[inheritance.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/inheritance_member_function.cpp)
+</div>
 The new `display` member function declared in the `Vec3` class will now replace the `Vector` classes `display` member function for `Vec3` objects.
 
 Lets build and run it to see the results.

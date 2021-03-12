@@ -48,6 +48,7 @@ and then add the three types of constructors.
 
 Note that the `...` in the lines `void display(){...}` and `void display(int num){...}` below are used to indicate that there is still code in those functions but we aren't showing them to improve readability and help highlight the changes we made.
 
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -87,7 +88,8 @@ int main(){
   delete [] b.data;
 }
 ~~~
-
+[constructor.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/constructor.cpp)
+</div>
 ~~~
 $ g++ constructor.cpp -o constructor
 $ ./constructor
@@ -140,6 +142,7 @@ $ nano destructor.cpp
 ~~~
 {: .bash}
 and edit it to look like the following
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -168,6 +171,8 @@ int main(){
   b.display();
 }
 ~~~
+[destructor.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/destructor.cpp)
+</div>
 Here we have added the destructor `~Vector()` which deallocates the memory allocated by the constructor. We no longer need to worry about allocating and deallocating memory where we create our vector objects, it happens automatically when we declare them and when they go out of scope.
 ~~~
 $ g++ destructor.cpp -o destructor

@@ -20,6 +20,7 @@ $ cp member_functions.cpp function_overload.cpp
 $ nano function_overload.cpp
 ~~~
 and modify it to look like this:
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -61,6 +62,8 @@ int main(){
   delete [] a.data;
 }
 ~~~~
+[function_overload.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/function_overload.cpp)
+</div>
 To avoid having two functions with fairly similar duplicate code, we also now call our new function from the old function but just pass the size of the vector. This will help with maintainability in that we only need to make changes to the display function in one place.
 
 We can now distinguish between which of these two function we wish to call, by either including an `int` parameter or not in the function call, e.g.

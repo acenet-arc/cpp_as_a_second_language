@@ -24,6 +24,7 @@ $ nano hello.cpp
 ~~~
 {: .bash}
 
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -31,6 +32,8 @@ int main(){
   std::cout<<"Hello, world!\n";
 }
 ~~~
+[hello.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/hello.cpp)
+</div>
 
 Use the GNU C++ compiler `g++` from the [GNU Compiler Collection (GCC)](https://gcc.gnu.org/) to build it:
 ~~~

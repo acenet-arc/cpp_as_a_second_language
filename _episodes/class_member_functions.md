@@ -22,6 +22,7 @@ $ nano member_functions.cpp
 ~~~
 and modify it to look like the following
 
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -50,7 +51,8 @@ int main(){
   delete [] a.data;
 }
 ~~~
-
+[member_functions.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/member_functions.cpp)
+</div>
 ~~~
 $ g++ member_functions.cpp -o member_functions
 $ ./member_functions

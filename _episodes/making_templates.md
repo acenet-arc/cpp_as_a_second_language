@@ -17,6 +17,7 @@ $ nano template.cpp
 ~~~
 {: .bash}
 
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 #include <vector>
@@ -43,6 +44,8 @@ int main(){
   displayVector(&b);
 }
 ~~~
+[template.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/template.cpp)
+</div>
 To create a template you use the `template` keyword followed by an open and close angle bracket `<>`. Inside those angle brackets we need to specify one or more template parameters. These parameters can sort of be thought of like the macro `defines` and how they can be used to replace some text by the preprocessor before compilation for example:
 ~~~
 #define MAX_SIZE 10

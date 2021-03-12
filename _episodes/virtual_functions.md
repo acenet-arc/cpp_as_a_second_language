@@ -20,6 +20,7 @@ $ nano virtual.cpp
 ~~~
 {: .bash}
 
+<div class="gitfile" markdown="1">
 ~~~
 class Vector{...};
 
@@ -43,6 +44,8 @@ int main(){
  nameAndDisplay(nameC,&c);
 }
 ~~~
+[virtual.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/pre_virtual.cpp)
+</div>
 
 Lets test out this new function.
 ~~~
@@ -66,7 +69,7 @@ Lets try it out.
 $ nano virtual.cpp
 ~~~
 {: .bash}
-
+<div class="gitfile" markdown="1">
 ~~~
 class Vector{
   int size;
@@ -98,6 +101,8 @@ int main(){
  nameAndDisplay(nameC,&c);
 }
 ~~~
+[virtual.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/virtual.cpp)
+</div>
 Note that the only addition we have made is the `virtual` keyword before the `void display()` function declaration in the `Vector` class.
 
 Lets compile and run it and see what we get.
