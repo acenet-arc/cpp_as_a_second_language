@@ -1,14 +1,13 @@
 ---
 layout: episode
 title: "Class member functions"
-teaching: 15
+teaching: 10
 exercises: 10
 questions:
 - "What is a class member function?"
 - "How do you create a class member function?"
 - "How do you call a class member function?"
 - "What data can class member functions access?"
-- "What is function overloading?"
 objectives:
 - ""
 keypoints:
@@ -95,99 +94,16 @@ int main(){
 ~~~
 Note I used the `->` operator which acts like the `.` operator but works when you have a pointer to the object rather than the object itself. I also used the `&` operator to get the address of the object to pass to the function.
 
-## Function overloading
-It might be nice to not always have a way to display only part of our vector, particularly if it is long.
 
-Function overloading allows you to declare multiple functions with the same name that are distinguished by the type and number of parameters passed to the function. We could overload our display function to take an extra `int` argument to maybe indicate how many elements we want it to output.
-~~~
-$ cp member_functions.cpp function_overload.cpp
-$ nano function_overload.cpp
-~~~
-and modify it to look like this:
-~~~
-#include <iostream>
-
-class Vector{
-public:
-  int size;
-  int* data;
-  
-  void display(int num){
-    int numToDisplay=size;
-    if(num<size){
-      numToDisplay=num;
-    }
-    
-    std::cout<<"Vector: size="<<size;
-    std::cout<<", contents=(";
-    for(int i=0;i<numToDisplay-1;++i){
-      std::cout<<data[i]<<",";
-    }
-    if(num<size){
-      std::cout<<data[numToDisplay-1]<<"...)\n";
-    }
-    else{
-      std::cout<<data[numToDisplay-1]<<")\n";
-    }
-  }
-  void display(){
-    display(size);
-  }
-};
-
-int main(){
-  Vector a;
-  a.size=10;
-  a.data=new int[a.size];
-  a.data[9]=15;
-  a.display();
-  a.display(5);
-  delete [] a.data;
-}
-~~~~
-To avoid having two functions with fairly similar duplicate code, we also now call our new function from the old function but just pass the size of the vector. This will help with maintainability in that we only need to make changes to the display function in one place.
-
-We can now distinguish between which of these two function we wish to call, by either including an `int` parameter or not in the function call, e.g.
-~~~
-a.display();
-~~~
-vrs.
-~~~
-a.display(5);
-~~~
-
-Lets build and run it
-~~~
-$ g++ function_overload.cpp -o function_overload
-$ ./function_overload
-~~~
-{: .bash}
-~~~
-Vector: size=10, contents=(0,0,0,0,0,0,0,0,0,15)
-Vector: size=10, contents=(0,0,0,0,0...)
-~~~
-{: .output}
-
-The elements 0-8 are zeros, but we didn't set them to zero. C and also C++ don't initialize variables to zero so we just got lucky that all these values where zero. The only one value that we can rely on is the one we actually set, the 15 at index 9.
-
-Function overloading works not just for class member functions, but also for regular independent functions.
-
-## The `this` keyword
-There is a special keyword that can be used in class member functions `this`, which is a pointer to the class object that the function was invoked from (e.g. the `a` object in the `a.display();` line). We could have written our class member function like this:
-~~~
-class A{
-public:
-  int foo;
-  void display(){
-    std::cout<<"foo="<<this->foo<<"\n";
-  }
-};
-~~~
-You might like to use the `this` keyword to make it clear when you are and aren't referencing the class object, but it isn't needed in this example.
+> ## Class member functions and function pointers
+> One wrinkle with using class member functions is if you want to use pointers to those functions, say for a callback. It can get very tricky because the function has access to and potentially uses data from within the object it is called from. If you use the function pointer in isolation as you would normally the function has no knowledge of which object it should access the data it might need from. If you need to reference a class member function as a function pointer, the simplest solution is to make it a stand alone function which has a parameter of the class type as is illustrated above.
+>
+> It is possible however, using [boost::bind](https://www.boost.org/doc/libs/1_66_0/libs/bind/doc/html/bind.html). Boost is a very large C++ library that adds heaps of additional functionality, but can be a bit of work to get and integrate into your projects, not to mention your compile times will definitely increase if you are using it.
+{: .callout}
 
 > ## Separating declarations and definitions
 > 
-> It is common in both C and C++ to separate the definition of structs, classes, and function declarations from the implementation. To move a class member function implementation out of the class declaration you need to prefix it with the class namespace. For example if we moved our display function out of our class declaration we would have
+> It is common in both C and C++ to separate the declarations of structs, classes, and function from the implementation. To move a class member function implementation out of the class declaration you need to prefix it with the class namespace. For example if we moved our display function out of our class declaration we would have
 > ~~~
 > #include <iostream>
 > 
@@ -211,9 +127,5 @@ You might like to use the `this` keyword to make it clear when you are and aren'
 > this could allow you to put your class member functions into a separate ".cpp" file and have your class definition in a ".h" file. This allows you to gain access to your class definition in other ".cpp" files where you might want to use your class. This is a common and fairly standard practice but not required. It allows you to compile each ".cpp" file separately and then link it together in the final exe. One alternative build method is what are called "Unity builds", where all the files are `#included` it into a single compilation unit (see [wiki page on single compilation unit](https://en.wikipedia.org/wiki/Single_Compilation_Unit) for a quick explanation).
 {: .callout}
 > ## Quick comment on build tools
-Build methods and tools is a huge topic in and of its self. Build tools are independent of the compiler you use but allow you to specify dependencies and commands to run to build the components of your exectubale. I usually prefer to keep this as simple as possible and use the GNU make tool. If I really want to get fancy I may sometimes use the [GNU Autotools](https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) which allows you to make a distribution package that would follow the `./configure` `make` `make install` process. On Windows I actually also use GNU make, see [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm). There are lots of build tools out there, but make has been around for a long time and as far as I can tell is the simplest I have come across.
-{: .callout}
-
-> ## Class member functions and function pointers
-> One wrinkle with using class member functions is if you want to use pointers to those functions, say for a callback. It can get very tricky because the function has access to and potentially uses data from within the object it is called from. Therefore you can't use class member functions for function pointers without a lot of work, for example have a look at [boost::bind](https://www.boost.org/doc/libs/1_66_0/libs/bind/doc/html/bind.html). Boost is a very large C++ library that adds heaps of additional functionality, but can be a bit of work to get and integrate into your projects, not to mention your compile times will definately increase if you are using it.
+Build methods and tools is a huge topic in and of its self. Build tools are independent of the compiler you use but allow you to specify dependencies and commands to run to build the components of your exectubale. I usually prefer to keep this as simple as possible and use the [GNU make](https://www.gnu.org/software/make/) tool. If I really want to get fancy I may sometimes use the [GNU Autotools](https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) which allows you to make a distribution package that would follow the `./configure` `make` `make install` process. On Windows I actually also use GNU make, see [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm). There are lots of build tools out there, but make has been around for a long time and as far as I can tell is the simplest I have come across.
 {: .callout}

@@ -19,7 +19,7 @@ Templates allow for **generic types**. With templates it is possible to write a 
 However, before we rush off and learn about creating templates to further generalize and extend our `Vector` class it turns out that there is already a class available in the [standard template library](https://www.cplusplus.com/reference/stl/) which does something similar. The standard template library (or STL) is composed of many different types of container classes, `vector`, `queue`, `stack`, `list`, `set`, `map` ... which can be used to contain basic or user created types. Lets try out using the STL `vector` class as an example of how to use these containers.
 
 ~~~
-$ nano stl_container.cpp
+$ nano stl_vector.cpp
 ~~~
 {: .bash}
 
@@ -45,8 +45,8 @@ int main(){
 From looking at the [standard template library reference](https://www.cplusplus.com/reference/stl/) we can see that it has a `push_back` member function, which allows us to add new items to the end of the vector. It has an `operator[]` which allows us to access items within the vector. Finally it has a `size` member function which lets us know how big the vector is.
 
 ~~~
-$ g++ stl_container.cpp -o stl_container
-$ ./stl_container
+$ g++ stl_vector.cpp -o stl_vector
+$ ./stl_vector
 ~~~
 {: .bash}
 ~~~

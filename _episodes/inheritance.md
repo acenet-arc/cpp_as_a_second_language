@@ -21,7 +21,14 @@ $ nano inheritance.cpp
 ~~~
 {: .bash}
 
-Then modify it to add a new class `Vec3` which inherits our previous `Vector` class. Another way of saying this is that the `Vec3` class is a derived class from the base class `Vector`. You can specify that one class will inherit another classes member variables and functions by adding a `:` after the new class name in the class declaration followed by an access method `public`, `private` or `protected` and then the name of the class to be inherited.
+Then modify it to add a new class `Vec3` which inherits our previous `Vector` class. Another way of saying this is that the `Vec3` class is a derived class from the base class `Vector`. You can specify that one class will inherit another class's member variables and functions by adding a `:` after the new class name in the class declaration followed by an access method `public`, `private` or `protected` and then the name of the class to be inherited.
+
+Types of inheritance:
+ * `public`: base class's public,protected, and private members are public,protected, and private in derived class.
+ * `protected`: base class's public,protected, and private members are protected,protected, and private in derived class.
+ * `private`: base class's public, protected, and private members are private, private, and private in derived class.
+
+For more details about types of inheritance see this [cppreference.com](https://en.cppreference.com/w/cpp/language/derived_class) page.
 
 ~~~
 #include <iostream>

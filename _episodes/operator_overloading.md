@@ -128,7 +128,8 @@ int main(){
   b.data[8]=10;
   a.display();
   b.display();
-  Vector c=a+b;
+  Vector c;
+  c=a+b;
   c.display();
 }
 ~~~

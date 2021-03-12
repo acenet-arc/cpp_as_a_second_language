@@ -30,7 +30,7 @@ There are different types of constructors, which makes use of the C++ function o
 
 * **Default**: has the form `A()` and is used when no parameters are given e.g. `A a;`.
 * **Parameterized**: has the form `A(int a, int b)` and is used in statements like `A a(10,15);`.
-* **Copy**: has the form `A(const A& a_in)` and constructs a new object from an existing e.g. in statements like `A a;A b=a;`
+* **Copy**: has the form `A(const A& a_in)` and constructs a new object from an existing e.g. in statements like `A a;A b=a;`.<br/> The `&` in the parameter list of a C++ function indicates that the object should be passed by reference rather than by value. This works quite similarly to passing a pointer in C as `const A* a_in` except that in the body of the function you can use the `.` operator rather than the `->` operator.
 
 In our case we can't rely on the constructors the compiler creates because we want to move our allocation of memory into the constructors. In each of the three different constructors we need to allocate enough memory to hold our newly constructed vector.
 

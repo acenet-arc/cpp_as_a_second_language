@@ -8,7 +8,7 @@ questions:
 - "How do you create a class?"
 - "How do you do use a class?"
 objectives:
-- "Create our first class to hold a set of integers."
+- "Create our first class to store some integers."
 keypoints:
 - "Use the `class` keyword to create a new class."
 - "Class access modifiers control what parts of the program can access the classes members."
