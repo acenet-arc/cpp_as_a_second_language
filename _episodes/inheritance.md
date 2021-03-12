@@ -14,14 +14,14 @@ keypoints:
 
 We have so far been using our `Vector` class to store some number of integers. However, what if we instead wanted to have a vector that we could use for 3D positions, would we have to build a new class to do this from scratch or could we somehow reuse what we have already done for our more general `Vector` class? The answer is yes we can reuse much of what we have already done, and we can do that using **inheritance**.
 
-As a starting point lets copy our previous program.
+As a starting point let's copy our previous program.
 ~~~
 $ cp operator.cpp inheritance.cpp
 $ nano inheritance.cpp
 ~~~
 {: .bash}
 
-Then modify it to add a new class `Vec3` which inherits our previous `Vector` class. Another way of saying this is that the `Vec3` class is a derived class from the base class `Vector`. You can specify that one class will inherit another classes member variables and functions by adding a `:` after the new class name in the class declaration followed by an access method `public`, `private` or `protected` and then the name of the class to be inherited.
+Then modify it to add a new class `Vec3` which inherits our previous `Vector` class. Another way of saying this is that the `Vec3` class is a derived class from the base class `Vector`. You can specify that one class will inherit another class's member variables and functions by adding a `:` after the new class name in the class declaration followed by an access method `public`, `private` or `protected` and then the name of the class to be inherited.
 
 ~~~
 #include <iostream>
@@ -118,8 +118,8 @@ Vec3: (10,0,0)
 > ~~~
 > 
 > ~~~
-> $ g++ multiple_inheratnace.cpp -o multiple_inheratnace
-> $ ./multiple_inheratnace
+> $ g++ multiple_inheritance.cpp -o multiple_inheritance
+> $ ./multiple_inheritance
 > ~~~
 > {: .bash}
 > 
