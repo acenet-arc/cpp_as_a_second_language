@@ -131,3 +131,30 @@ Note I used the `->` operator which acts like the `.` operator but works when yo
 > ## Quick comment on build tools
 Build methods and tools is a huge topic in and of its self. Build tools are independent of the compiler you use but allow you to specify dependencies and commands to run to build the components of your exectubale. I usually prefer to keep this as simple as possible and use the [GNU make](https://www.gnu.org/software/make/) tool. If I really want to get fancy I may sometimes use the [GNU Autotools](https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) which allows you to make a distribution package that would follow the `./configure` `make` `make install` process. On Windows I actually also use GNU make, see [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm). There are lots of build tools out there, but make has been around for a long time and as far as I can tell is the simplest I have come across.
 {: .callout}
+
+> ## 
+> 
+> <ol type="a">
+> <li markdown="1">
+> a variable which can have multiple members like a struct
+> </li>
+> <li markdown="1">an object which can have multiple members like a struct
+> </li>
+> <li markdown="1">a datatype which can have multiple members like a struct
+> </li>
+> <li markdown="1">a datatype which can have only a single value like `int`,`float`,etc.
+> </li>
+> </ol>
+> > ## Solution
+> > <ol type="a">
+> > <li markdown="1">**NO**: while a class can have multiple members like a struct, a class defines a new datatype where as a variable or object are the instantiation of that class or datatype.
+> > </li>
+> > <li markdown="1">**NO**: while an object has a class type, the object is not the class its self.
+> > </li>
+> > <li markdown="1">**Yes**: a class is a kind of datatype that can have multiple members.
+> > </li>
+> > <li markdown="1">**No**: classes can have multiple members, it is possible that they only have one member but they are not restricted to holding a single value.
+> > </li>
+> > </ol>
+> {: .solution}
+{: .challenge}
