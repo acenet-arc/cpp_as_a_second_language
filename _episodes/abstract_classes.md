@@ -14,7 +14,7 @@ keypoints:
 
 Taking the idea of polymorphism and inheritance mentioned previously a little further, what if we wanted to have a more general base class which we could pass to a function to allow displaying of any future class we might create? We could create what is known as an abstract base class.
 
-Lets do that now by copying our `virtual.cpp` program to a new `abstract.cpp` program and opening it in `nano`.
+Let's do that now by copying our `virtual.cpp` program to a new `abstract.cpp` program and opening it in `nano`.
 
 ~~~
 $ cp virtual.cpp abstract.cpp
@@ -50,7 +50,7 @@ int main(){
   nameAndDisplay(nameC,&c);
 }
 ~~~
-We have create a new class `Displayable`, this is an abstract class because of the line `virtual void display()=0;` which indicates we have not provided an implementation for this member function. A member function declared in this way with no implementation is referred to as a **pure virtual function**. Any class with one or more pure virtual functions is referred to as an **abstract** class.
+We have created a new class `Displayable`.  This is an abstract class because of the line `virtual void display()=0;` which indicates we have not provided an implementation for this member function. A member function declared in this way with no implementation is referred to as a **pure virtual function**. Any class with one or more pure virtual functions is referred to as an **abstract** class.
 
 Abstract classes with pure virtual functions can not be used to create objects directly as they are missing the implementation of at least one member function. This is part of the reason they are called 'abstract' because they can't be directly used. However, they can be used as base classes by other classes. In our above example we now have the `Vector` class inheriting the abstract class `Displayable`. We have also made our `nameAndDisplay` function take a pointer to a `Displayable` rather than a `Vector`. Now we can pass that function a pointer to any object that is of a class which inherits the `Displayable` abstract class. Classes which inherit an abstract class must override all the pure virtual member functions in order to not be abstract classes themselves.
 
