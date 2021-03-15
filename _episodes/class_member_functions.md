@@ -132,7 +132,7 @@ Note I used the `->` operator which acts like the `.` operator but works when yo
 Build methods and tools is a huge topic in and of its self. Build tools are independent of the compiler you use but allow you to specify dependencies and commands to run to build the components of your exectubale. I usually prefer to keep this as simple as possible and use the [GNU make](https://www.gnu.org/software/make/) tool. If I really want to get fancy I may sometimes use the [GNU Autotools](https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) which allows you to make a distribution package that would follow the `./configure` `make` `make install` process. On Windows I actually also use GNU make, see [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm). There are lots of build tools out there, but make has been around for a long time and as far as I can tell is the simplest I have come across.
 {: .callout}
 
-> ## Class 
+> ## Member function variables
 > ~~~
 > class A{
 > public:
@@ -149,7 +149,7 @@ Build methods and tools is a huge topic in and of its self. Build tools are inde
 >   a.func();
 > }
 > ~~~
-> what is the output from the above program when compiled and executed.
+> What is the output from the above program when compiled and executed?
 > <ol type="a">
 > <li markdown="1">
 > 1 1 

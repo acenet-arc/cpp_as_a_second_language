@@ -82,6 +82,7 @@ episode_order:
   - break02
   - using_templates
   - making_templates
+  - finish
 # - create-a-persistent-virtual-machine
 #  - intro-to-jekyll
 #  - install-mysql
