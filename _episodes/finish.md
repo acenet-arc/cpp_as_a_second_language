@@ -1,6 +1,6 @@
 ---
 layout: episode
-title: "Finish"
+title: "Wrapping up"
 teaching: 2
 exercises: 
 questions:
