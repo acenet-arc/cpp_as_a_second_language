@@ -14,7 +14,7 @@ keypoints:
 
 We have so far been using our `Vector` class to store some number of integers. However, what if we instead wanted to have a vector that we could use for 3D positions, would we have to build a new class to do this from scratch or could we somehow reuse what we have already done for our more general `Vector` class? The answer is yes we can reuse much of what we have already done, and we can do that using **inheritance**.
 
-As a starting point lets copy our previous program.
+As a starting point let's copy our previous program.
 ~~~
 $ cp operator.cpp inheritance.cpp
 $ nano inheritance.cpp
@@ -131,8 +131,8 @@ Vec3: (10,0,0)
 > ~~~
 > 
 > ~~~
-> $ g++ multiple_inheratnace.cpp -o multiple_inheratnace
-> $ ./multiple_inheratnace
+> $ g++ multiple_inheritance.cpp -o multiple_inheritance
+> $ ./multiple_inheritance
 > ~~~
 > {: .bash}
 > 
