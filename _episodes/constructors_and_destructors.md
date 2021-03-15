@@ -30,7 +30,7 @@ There are different types of constructors, which makes use of the C++ function o
 
 * **Default**: has the form `A()` and is used when no parameters are given e.g. `A a;`.
 * **Parameterized**: has the form `A(int a, int b)` and is used in statements like `A a(10,15);`.
-* **Copy**: has the form `A(const A& a_in)` and constructs a new object from an existing e.g. in statements like `A a;A b=a;`
+* **Copy**: has the form `A(const A& a_in)` and constructs a new object from an existing e.g. in statements like `A a;A b=a;`.<br/> The `&` in the parameter list of a C++ function indicates that the object should be passed by reference rather than by value. This works quite similarly to passing a pointer in C as `const A* a_in` except that in the body of the function you can use the `.` operator rather than the `->` operator.
 
 In our case we can't rely on the constructors the compiler creates because we want to move our allocation of memory into the constructors. In each of the three different constructors we need to allocate enough memory to hold our newly constructed vector.
 
@@ -48,6 +48,7 @@ and then add the three types of constructors.
 
 Note that the `...` in the lines `void display(){...}` and `void display(int num){...}` below are used to indicate that there is still code in those functions but we aren't showing them to improve readability and help highlight the changes we made.
 
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -87,7 +88,8 @@ int main(){
   delete [] b.data;
 }
 ~~~
-
+[constructor.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/constructor.cpp)
+</div>
 ~~~
 $ g++ constructor.cpp -o constructor
 $ ./constructor
@@ -140,6 +142,7 @@ $ nano destructor.cpp
 ~~~
 {: .bash}
 and edit it to look like the following
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -168,6 +171,8 @@ int main(){
   b.display();
 }
 ~~~
+[destructor.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/destructor.cpp)
+</div>
 Here we have added the destructor `~Vector()` which deallocates the memory allocated by the constructor. We no longer need to worry about allocating and deallocating memory where we create our vector objects, it happens automatically when we declare them and when they go out of scope.
 ~~~
 $ g++ destructor.cpp -o destructor

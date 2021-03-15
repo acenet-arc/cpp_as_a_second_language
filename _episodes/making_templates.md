@@ -17,6 +17,7 @@ $ nano template.cpp
 ~~~
 {: .bash}
 
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 #include <vector>
@@ -43,6 +44,8 @@ int main(){
   displayVector(&b);
 }
 ~~~
+[template.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/template.cpp)
+</div>
 To create a template you use the `template` keyword followed by an open and close angle bracket `<>`. Inside those angle brackets we need to specify one or more template parameters. These parameters can sort of be thought of like the macro `defines` and how they can be used to replace some text by the preprocessor before compilation for example:
 ~~~
 #define MAX_SIZE 10
@@ -72,3 +75,7 @@ I may or may not want to talk about these other aspects of templates, probably w
 * Class Templates
 * Template specialization
 * Non-type parameters
+
+## Further fairly important topics in C/C++
+* [fstream](http://www.cplusplus.com/reference/fstream/) (file input/output)
+* [assert](http://www.cplusplus.com/reference/cassert/assert/) (very good programming practice, not just a C++ topic but also a C topic)

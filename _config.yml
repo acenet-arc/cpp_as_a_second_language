@@ -72,6 +72,7 @@ episode_order:
   - classes
   - break00
   - class_member_functions
+  - function_overloading
   - constructors_and_destructors
   - operator_overloading
   - break01

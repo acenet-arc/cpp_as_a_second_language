@@ -26,7 +26,7 @@ Let's add a new `+` operator to our `Vector` class.
 $ cp destructor.cpp operator.cpp
 $ nano operator.cpp
 ~~~
-
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -68,6 +68,8 @@ int main(){
   c.display();
 }
 ~~~
+[operator.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/operator%2B.cpp)
+</div>
 
 This new `+` operator returns a `Vector` object and has a `Vector` object as an argument. In a statement like `Vector c=a+b;` where `a` and `b` are objects of type `Vector` you can think of it being like `Vector d=a.operator+(b);` and in fact you can actually use it like that if you wish. In this way `operator+` acts exactly like any other class member function, except that it can also be invoked directly like `a+b` rather that using the `.` and the full function name.
 
@@ -92,6 +94,8 @@ For a list of operators and where each can be declared see:
 
 ## operator=
 We have so far used the `+` operator we defined like so, `Vector a,b; Vector c=a+b;`, however if we wanted to use it this way `Vector a,b,c; c=a+b;` we would have an issue. So far we have been relying on our copy constructor which gets called when we do `Vector c=`some other vector, however when we do `c=a+b` it will invoke the compiler created assignment operator (`operator=`) which will just copy our pointers over. Then when the destructors gets called for the two `Vector` objects with the same pointer it will cause a double free error. This exactly the same thing that would happen if we didn't create our copy constructor for exactly the same reason. Lets add an assignment operator now.
+
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -128,11 +132,13 @@ int main(){
   b.data[8]=10;
   a.display();
   b.display();
-  Vector c=a+b;
+  Vector c;
+  c=a+b;
   c.display();
 }
 ~~~
-
+[operator.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/operator%3D.cpp)
+</div>
 Notice that we check to see if the rhs has the same address as the current object (self assignment `a=a`), if so there is nothing to do. If we didn't do this check we would delete our data and then try to copy the new uninitialized data to itself, which doesn't seem like a good thing to do.
 
 

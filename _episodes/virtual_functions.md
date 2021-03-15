@@ -20,6 +20,7 @@ $ nano virtual.cpp
 ~~~
 {: .bash}
 
+<div class="gitfile" markdown="1">
 ~~~
 class Vector{...};
 
@@ -35,14 +36,16 @@ int main(){
  a.data[0]=10;
  b.data[0]=22;
  Vector c=a+b;
- char nameA[]={"a\0"};
+ char nameA[]={"a"};
  nameAndDisplay(nameA,&a);
- char nameB[]={"b\0"};
+ char nameB[]={"b"};
  nameAndDisplay(nameB,&b);
- char nameC[]={"c\0"};
+ char nameC[]={"c"};
  nameAndDisplay(nameC,&c);
 }
 ~~~
+[virtual.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/pre_virtual.cpp)
+</div>
 
 Lets test out this new function.
 ~~~
@@ -66,7 +69,7 @@ Let's try it out.
 $ nano virtual.cpp
 ~~~
 {: .bash}
-
+<div class="gitfile" markdown="1">
 ~~~
 class Vector{
   int size;
@@ -90,14 +93,16 @@ int main(){
  a.data[0]=10;
  b.data[0]=22;
  Vector c=a+b;
- char nameA[]={"a\0"};
+ char nameA[]={"a"};
  nameAndDisplay(nameA,&a);
- char nameB[]={"b\0"};
+ char nameB[]={"b"};
  nameAndDisplay(nameB,&b);
- char nameC[]={"c\0"};
+ char nameC[]={"c"};
  nameAndDisplay(nameC,&c);
 }
 ~~~
+[virtual.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/virtual.cpp)
+</div>
 Note that the only addition we have made is the `virtual` keyword before the `void display()` function declaration in the `Vector` class.
 
 Compile and run it and see what we get.

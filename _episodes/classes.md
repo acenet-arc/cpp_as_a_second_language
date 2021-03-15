@@ -8,7 +8,7 @@ questions:
 - "How do you create a class?"
 - "How do you do use a class?"
 objectives:
-- "Create our first class to hold a set of integers."
+- "Create our first class to store some integers."
 keypoints:
 - "Use the `class` keyword to create a new class."
 - "Class access modifiers control what parts of the program can access the classes members."
@@ -24,6 +24,7 @@ $ nano classes.cpp
 ~~~
 
 Then modify it to look like the code below.
+<div class="gitfile" markdown="1">
 ~~~
 #include <iostream>
 
@@ -43,6 +44,8 @@ int main(){
   delete[] a.data;
 }
 ~~~
+[classes.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/classes.cpp)
+</div>
 Here we have put the variable `size` and the array `a` renamed to `data` into our new `Vector` class. We have also used the `.` operator to access the classes `public` members.
 ~~~
 $ g++ classes.cpp -o classes
