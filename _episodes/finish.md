@@ -3,12 +3,6 @@ layout: episode
 title: "Wrapping up"
 teaching: 2
 exercises: 
-questions:
-- "What's left?"
-objectives:
-- ""
-keypoints:
-- ""
 ---
 The topics in C and C++ are vast, I have only covered the core concepts and have left out many newer features added to the language.
 

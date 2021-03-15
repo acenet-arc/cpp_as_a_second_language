@@ -42,11 +42,11 @@ public:
   };
 };
 int main(){
-  Vec3 p0;
-  p0.data[0]=1;
-  p0.data[1]=2;
-  p0.data[2]=3;
-  p0.display();
+  Vec3 a;
+  a.data[0]=1;
+  a.data[1]=2;
+  a.data[2]=3;
+  a.display();
 }
 ~~~
 [inheritance.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/inheritance.cpp)
