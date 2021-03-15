@@ -16,7 +16,7 @@ keypoints:
 
 Templates allow for **generic types**. With templates it is possible to write a function or a class which can operator on any type of data. For example our `Vector` class only works with `int`s but using templates we could create it in such a way that it would work with any type, including types created by us or other programmers.
 
-However, before we rush off and learn about creating templates to further generalize and extend our `Vector` class it turns out that there is already a class available in the [standard template library](https://www.cplusplus.com/reference/stl/) which does something similar. The standard template library (or STL) is composed of many different types of container classes, `vector`, `queue`, `stack`, `list`, `set`, `map` ... which can be used to contain basic or user created types. Lets try out using the STL `vector` class as an example of how to use these containers.
+However, before we rush off and learn about creating templates to further generalize and extend our `Vector` class it turns out that there is already a class available in the [standard template library](https://www.cplusplus.com/reference/stl/) which does something similar. The standard template library (or STL) provides many different types of container classes, `vector`, `queue`, `stack`, `list`, `set`, `map` ... which can be used to contain basic or user-created types. Let's try the STL `vector` class as an example of how to use these containers.
 
 ~~~
 $ nano stl_vector.cpp
@@ -57,7 +57,7 @@ $ ./stl_vector
 ~~~
 {: .output}
 
-The container `std::vector` is a template class. What this means is that when we have a line in our code like `std::vector<int>` and we compile the code, the compiler will create a vector class that works for `int` data types at compile time based on the template provided in the 'vector' header we included with `#include <vector>`. If we had multiple different lines with `std::vector<some type>` a new version would be created at compile time for each type. This means that compile times can get rather lengthy when templates re used heavily. However, putting this time and work into compile time can sometimes result in faster code at run time as different code paths are decided at compile time rather than run time.
+The container `std::vector` is a template class. What this means is that when we have a line in our code like `std::vector<int>` and we compile the code, the compiler will create a vector class that works for `int` data types at compile time based on the template provided in the 'vector' header we included with `#include <vector>`. If we had multiple different lines with `std::vector<some type>` a new version would be created at compile time for each type. This means that compile times can get rather lengthy when templates are used heavily. However, putting this time and work into compile time can sometimes result in faster code at run time as different code paths are decided at compile time rather than run time.
 
 
 > ## Iterators
@@ -71,5 +71,5 @@ The container `std::vector` is a template class. What this means is that when we
 >   std::cout<<*it<<"\n";
 > }
 > ~~~
-> For more information about using iterators see [this programming tutorial][https://www.cprogramming.com/tutorial/stl/iterators.html]
+> For more information about using iterators see [this programming tutorial](https://www.cprogramming.com/tutorial/stl/iterators.html)
 {: .callout}

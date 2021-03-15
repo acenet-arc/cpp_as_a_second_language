@@ -20,7 +20,7 @@ Operator overloading works similar to how function overloading works.
 
 To create a new operator function you need to use the `operator` keyword followed by the operator you wish to overload, for example `operator+`. The rest of the syntax for creating an operator is similar to how a function is created.
 
-Lets add a new `+` operator to our `Vector` class. 
+Let's add a new `+` operator to our `Vector` class. 
 
 ~~~
 $ cp destructor.cpp operator.cpp
@@ -87,7 +87,7 @@ Vector: size=20, contents=(0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,0,10,15)
 {: .output}
 As we can see it added the two vectors together, with `a` preceding `b`.
 
-Some operators can be declared as class member functions and some must be declared outside the class and some can be declared either way depending on how we want to use them. There are quite a few different operators, combining those with the different constructors, different data types, and how the operators work together can lead to quite a few different ways to create operators and you can really spend a lot of time trying to create operators to cover all the possible ways you might want to use operators with your class. **Be careful not to spend too much time written code you might not need**.
+Some operators can be declared as class member functions and some must be declared outside the class and some can be declared either way depending on how we want to use them. There are quite a few different operators; combining those with the different constructors, different data types, and how the operators work together can lead to quite a few different ways to create operators. You can really spend a lot of time trying to create operators to cover all the possible ways you might want to use operators with your class. **Be careful not to spend too much time writing code you might not need**.
 
 For a list of operators and where each can be declared see:
 [https://www.cplusplus.com/doc/tutorial/templates/](https://www.cplusplus.com/doc/tutorial/templates/)
@@ -139,7 +139,7 @@ int main(){
 ~~~
 [operator.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/operator%3D.cpp)
 </div>
-Notice that we check to see if the rhs has the same address as the current object (self assignment `a=a`), if so there is nothing to do. If we didn't do this check we would delete our data and then try to assign the new data to the new uninitialized data to itself, this doesn't seem like a good thing to do.
+Notice that we check to see if the rhs has the same address as the current object (self assignment `a=a`), if so there is nothing to do. If we didn't do this check we would delete our data and then try to copy the new uninitialized data to itself, which doesn't seem like a good thing to do.
 
 
 ## Rule of Three

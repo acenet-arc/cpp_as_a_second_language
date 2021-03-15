@@ -10,7 +10,7 @@ objectives:
 keypoints:
 - ""
 ---
-In the last episode we created a function to display a `std::vector<int>` however one of the nice things about `std:vector` is that it can be used with different data types, however our function can only be used with the `int` type, can we use templates to create our own function template? Yes we can, so lets do that.
+In the last episode we created a function to display a `std::vector<int>`. One of the nice things about `std:vector` is that it can be used with different data types, but our function can only be used with the `int` type. Can we use templates to create our own function template? Yes we can, so let's do that.
 ~~~
 $ cp stl_vector.cpp template.cpp
 $ nano template.cpp
@@ -53,7 +53,7 @@ int array[MAX_SIZE]
 ~~~
 where `MAX_SIZE` is replaced by 10 by the preprocessor.
 
-In our case we are using `T` as a parameter for a datatype within our template function `displayVector`. We can replace any location we needed to specify a type with the `T`. We could have even specified more template parameters if we wanted separating them with commands like `template<typename T, typename U>`.
+In our case we are using `T` as a parameter for a datatype within our template function `displayVector`. We can replace any location we needed to specify a type with the `T`. We could have even specified more template parameters if we wanted to, separating them with commas like `template<typename T, typename U>`.
 
 In our example we are making use of the fact that the `<<` operator on an output stream knows how to output both an `int` and a `double`.
 
