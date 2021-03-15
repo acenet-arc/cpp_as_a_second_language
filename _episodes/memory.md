@@ -122,3 +122,129 @@ Because we used the `new[]` version we must use the `delete[]` version to match 
 > ### Valgrind
 > Is a collection of useful tools which allows checking for memory errors, performance profiling, and more. See [valgrind.org](https://valgrind.org/) for more information.
 {: .callout}
+
+> ## How much memory is allocated?
+> ~~~
+> int* createIntArray(int size){
+>   int* a=new int[size];
+>   return a;
+> }
+> 
+> int main(){
+>   int* array;
+>   for(int i=0;i<10;++i){
+>     array=createIntArray(10);
+>   }
+> }
+> ~~~
+> what is the maximum amount of memory allocated at any point during the running of this application if `sizeof(int)==4` (in other words an `int` is 4 bytes).
+> <ol type="a">
+> <li markdown="1">
+> 400 bytes
+> </li>
+> <li markdown="1">
+> 10 bytes
+> </li>
+> <li markdown="1">
+> 40 bytes
+> </li>
+> <li markdown="1">
+> 100 bytes
+> </li>
+> </ol>
+> > ## Solution
+> > <ol type="a">
+> > <li markdown="1">
+> > **YES**: 10x from the loop, 10x from the array allocation, 4 bytes from the size of an `int`. This is because we do not free or `delete` any memory during this program.
+> > </li>
+> > <li markdown="1">
+> > **NO**: we are allocating enough memory to hold 10 `int`s each time the function is called. An integer is 4 bytes so a single call to the function will allocate 40 bytes. However, we are also calling the function 10 times without deleting any memory.
+> > </li>
+> > <li markdown="1">
+> > **NO**: 40 bytes are allocated every time the function is called, but it is called 10 times and we do not delete any memory.
+> > </li>
+> > <li markdown="1">
+> > **NO**: note that when we use `new` it allocates an amount of memory based the number of a particular data type, in this case an `int`. This is different than the C `malloc` function which takes a size in `bytes` to allocate. In this case `size` is the size of the array, or the number of `int`s in the array.
+> > </li>
+> > </ol>
+> {: .solution}
+{: .challenge}
+> ## How much memory is deallocated?
+> ~~~
+> int* createIntArray(int size){
+>   int* a=new int[size];
+>   return a;
+> }
+> 
+> int main(){
+>   int* array;
+>   for(int i=0;i<10;++i){
+>     array=createIntArray(10);
+>   }
+>   delete[] array;
+> }
+> ~~~
+> how much memory was deallocated if `sizeof(int)==4` (in other words an `int` is 4 bytes).
+> <ol type="a">
+> <li markdown="1">
+> 400 bytes
+> </li>
+> <li markdown="1">
+> 4 bytes
+> </li>
+> <li markdown="1">
+> 40 bytes
+> </li>
+> </ol>
+> > ## Solution
+> > <ol type="a">
+> > <li markdown="1">
+> > **NO**: 400 bytes are allocated, but that isn't how many bytes are deallocated. The `delete` keyword is used outside the loop and will delete the last array that is allocated, but will miss the other 9 arrays that are allocated previously.
+> > </li>
+> > <li markdown="1">
+> > **NO**: the `delete` keyword when used in the form `delete[]` will delete an entire array allocated with keyword `new[]` and not just a single element of that array.
+> > </li>
+> > <li markdown="1">
+> > **yes**: 40 bytes are deleted, which is only the last array allocated. That means that 9x40=360 bytes have not been deallocated.
+> > </li>
+> > </ol>
+> {: .solution}
+{: .challenge}
+
+> ## Where does the memory go?
+> ~~~
+> void createIntArray(int size){
+>   int* a=new int[size];
+>   return;
+> }
+> 
+> int main(){
+>   createIntArray(10);
+> }
+> ~~~
+> What happens to the memory that is allocated inside the `createIntArray` function after the function is called and execution returns to the  main function?
+> <ol type="a">
+> <li markdown="1">
+> At the end of the function `a` goes out of scope and the memory is deleted.
+> </li>
+> <li markdown="1">
+> The memory remains allocated however there is no way to access or `delete` it as the reference to it, `a`, has gone out of scope.
+> </li>
+> <li markdown="1">
+> Since the reference count to the memory is now zero, at some later time the garbage collector will free the allocated memory.
+> </li>
+> </ol>
+> > ## Solution
+> > <ol type="a">
+> > <li markdown="1">
+> > **NO**: the compiler does not assume that you would want to delete allocated memory when a reference to it goes out of scope. What would happen if there was another reference to it and the memory was deleted when the first reference to it goes out of scope?
+> > </li>
+> > <li markdown="1">
+> > **YES**: 
+> > </li>
+> > <li markdown="1">
+> > **NO**: C and C++ do not have garbage collectors and don't do reference counting for you.
+> > </li>
+> > </ol>
+> {: .solution}
+{: .challenge}

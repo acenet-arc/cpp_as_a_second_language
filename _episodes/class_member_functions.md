@@ -132,28 +132,52 @@ Note I used the `->` operator which acts like the `.` operator but works when yo
 Build methods and tools is a huge topic in and of its self. Build tools are independent of the compiler you use but allow you to specify dependencies and commands to run to build the components of your exectubale. I usually prefer to keep this as simple as possible and use the [GNU make](https://www.gnu.org/software/make/) tool. If I really want to get fancy I may sometimes use the [GNU Autotools](https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) which allows you to make a distribution package that would follow the `./configure` `make` `make install` process. On Windows I actually also use GNU make, see [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm). There are lots of build tools out there, but make has been around for a long time and as far as I can tell is the simplest I have come across.
 {: .callout}
 
-> ## 
-> 
+> ## Class 
+> ~~~
+> class A{
+> public:
+>   int foo;
+>   void func(){
+>     std::cout<<foo<<" ";
+>   }
+> }
+> int main(){
+>   A a,b;
+>   a.foo=1;
+>   b.foo=2;
+>   b.func();
+>   a.func();
+> }
+> ~~~
+> what is the output from the above program when compiled and executed.
 > <ol type="a">
 > <li markdown="1">
-> a variable which can have multiple members like a struct
+> 1 1 
 > </li>
-> <li markdown="1">an object which can have multiple members like a struct
+> <li markdown="1">
+> 2 2 
 > </li>
-> <li markdown="1">a datatype which can have multiple members like a struct
+> <li markdown="1">
+> 1 2 
 > </li>
-> <li markdown="1">a datatype which can have only a single value like `int`,`float`,etc.
+> <li markdown="1">
+> 2 1
+> </li>
+> <li markdown="1">
+> foo foo
 > </li>
 > </ol>
 > > ## Solution
 > > <ol type="a">
-> > <li markdown="1">**NO**: while a class can have multiple members like a struct, a class defines a new datatype where as a variable or object are the instantiation of that class or datatype.
+> > <li markdown="1">**NO**: the memory which stores `foo` in `a` and `b` is separate so they have distinct values for each object. When the function `func` is invoked the `foo` variable takes on the value of the object the function is invoked on.
 > > </li>
-> > <li markdown="1">**NO**: while an object has a class type, the object is not the class its self.
+> > <li markdown="1">**NO**: same reason as answer a.
 > > </li>
-> > <li markdown="1">**Yes**: a class is a kind of datatype that can have multiple members.
+> > <li markdown="1">**NO**: not quite, note the order the functions are called in `b.func()` is called first then `a.func()`.
 > > </li>
-> > <li markdown="1">**No**: classes can have multiple members, it is possible that they only have one member but they are not restricted to holding a single value.
+> > <li markdown="1">**YES**: when `b.func()` is called, `foo` takes on the value of `2` and is printed out followed by a space. When `a.func()` is called, `foo` takes on the value of `1` and is printed out followed by a space.
+> > </li>
+> > <li markdown="1">**No**: you would need to have quotes around `foo` to get this output so that it would be a string rather than a variable.
 > > </li>
 > > </ol>
 > {: .solution}

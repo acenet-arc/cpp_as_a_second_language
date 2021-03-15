@@ -15,7 +15,7 @@ keypoints:
 - "Class members can be accessed with the `.` operator."
 ---
 
-Previously we created an array of integers. It is very handy to be able to dynamically allocate memory of a give size that could potentially be determined at run time. However, as we just saw this introduces having to manage the dynamically allocated memory with `new`/`new[]` and `delete`/`delete[]`. The main way C++ tries to organize the management of these sorts of things is to use classes. So lets try that out and create a new `Vector` class which will allow us to more easily manage allocation of dynamic arrays of integers.
+Previously we created an array of integers. It is very handy to be able to dynamically allocate memory of a given size that could potentially be determined at run time. However, as we just saw this introduces having to manage the dynamically allocated memory with `new`/`new[]` and `delete`/`delete[]`. The main way C++ tries to organize the management of these sorts of things is to use classes. So lets try that out and create a new `Vector` class which will allow us to more easily manage allocation of dynamic arrays of integers.
 
 Start by coping our `memory.cpp` program from last time.
 ~~~
