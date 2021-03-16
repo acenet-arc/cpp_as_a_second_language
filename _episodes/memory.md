@@ -16,8 +16,8 @@ keypoints:
 
 C and C++ are fairly low level languages and as such you can manage your programs memory yourself. This means that you can have great control over how much memory is used and when and careful planning and usage can lead to lower memory usage and more performant code than in other languages which manage this for you. However, care must be take to avoid issues such as:
 1. memory leaks (memory allocated but not freed) which if inside some looping code could cause your program to run out of memory and crash
-2. writing outside of memory owned by your program (segmentation fault and crash)
-3. writing past array bounds but still into memory owned by your program (no crash, but possibly subtly unexpected result may occur)
+2. writing or reading outside of memory owned by your program (segmentation fault and crash)
+3. writing or reading past array bounds but still into memory owned by your program (no crash, but likely wrong results may occur)
 
 ## Allocation
 In C you use `malloc` to allocate memory, but in C++ you should use `new`. It is possible to use `malloc` but some additional steps need to be taken to ensure it works properly with C++ classes.
@@ -101,7 +101,7 @@ $ ./memory
 a[9]=15
 ~~~
 {: .output}
-Because we used the `new[]` version we must use the `delete[]` version to match it. Notice that we don't have to tell it the size of the array, this information is tract for us.
+Because we used the `new[]` version we must use the `delete[]` version to match it. Notice that we don't have to tell it the size of the array, this information is tracked for us.
 
 > ## Debug tools
 > It is possible to use a tool to help find bugs in your code. These tools usually let you inspect the values of variables in your code, step through execution line by line, set beak points in your code to stop execution and let you examine variables. They will also help in detecting some memory issues like accessing memory your program doesn't have access to (e.g. Segmentation faults) and stop on the line where it occurs.
