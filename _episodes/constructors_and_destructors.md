@@ -184,3 +184,136 @@ Vector: size=10, contents=(0,0,0,0,0,0,0,0,0,15)
 Vector: size=10, contents=(0,0,0,0,0,0,0,0,10,15)
 ~~~
 {: .output}
+
+> ## When is the copy constructor called?
+> ~~~
+>  1 #include <iostream>
+>  2 
+>  3 class Vector{
+>  4 public:
+>  5   int size;
+>  6   int* data;
+>  7   
+>  8   ~Vector(){
+>  9     std::cout<<"Destructor\n";
+> ...
+> 11   }
+> 12   Vector(){
+> 13     std::cout<<"Default constructor\n";
+> ...
+> 16   }
+> 17   Vector(int size_in){
+> 18     std::cout<<"Parameterized constructor with size_in="<<size_in<<"\n";
+> ...
+> 21   }
+> 22   Vector(const Vector& vec_in){
+> 23     std::cout<<"Copy constructor\n";
+> ...
+> 29   }
+> 30   void display(){...}
+> 38   void display(int num){...}
+> 58 };
+> 59
+> 60 int main(){
+> 61   Vector a(10);
+> 62   a.data[9]=15;
+> 63   Vector b=a;
+> 64   b.data[8]=10;
+> 65   a.display();
+> 66   b.display();
+> 67 }
+> ~~~
+> Above we have taken our `destructor.cpp` program and added print outs in the three constructors and the destructor. If we compile and run this program we get the following output:
+> ~~~
+> Parameterized constructor with size_in=10
+> Copy constructor
+> Vector: size=10, contents=(0,0,0,0,0,0,0,0,0,15)
+> Vector: size=10, contents=(0,0,0,0,0,0,0,0,10,15)
+> Destructor
+> Destructor
+> ~~~
+> {: .output}
+> During the execution of which line of the `main` function does the output `Copy constructor` get generated?
+> <ol type="a">
+> <li markdown="1">line 61
+> </li>
+> <li markdown="1">line 62
+> </li>
+> <li markdown="1">line 63
+> </li>
+> </ol>
+> > ## Solution
+> > <ol type="a">
+> > <li markdown="1">
+> > **NO**: this is when the first line of output gets generated `Parameterized constructor with size_in=10`. This line uses the parameterized constructor.
+> > </li>
+> > <li markdown="1">
+> > **NO**: this line actually generates no output at all. On this line the class member `data` has its ninth element assigned the value `15`.
+> > </li>
+> > <li markdown="1">
+> > **YES**: This line creates a new `Vector` object and initializes it using the copy constructor from the existing `a` `Vector` object.
+> > </li>
+> > </ol>
+> {: .solution}
+{: .challenge}
+
+> ## What happens if we don't have a copy constructor?
+> Lets comment out our copy constructor and find out
+> ~~~
+>  1 #include <iostream>
+>  2 
+>  3 class Vector{
+>  4 public:
+>  5   int size;
+>  6   int* data;
+>  7   
+>  8   ~Vector(){...}
+> 
+> 12   Vector(){...}
+> 
+> 17   Vector(int size_in){...}
+> 
+> 22   //Vector(const Vector& vec_in){
+> 23   //  std::cout<<"Copy constructor\n";
+> 24   //  size=vec_in.size;
+> 25   //  data=new int[size];
+> 26   //  for(int i=0;i<vec_in.size;++i){
+> 27   //    data[i]=vec_in.data[i];
+> 28   //  }
+> 29   //}
+> 30   void display(){...}
+> 
+> 38   void display(int num){...}
+> 
+> 58 };
+> 59
+> 60 int main(){
+> 61   Vector a(10);
+> 62   a.data[9]=15;
+> 63   Vector b=a;
+> 64   b.data[8]=10;
+> 65   a.display();
+> 66   b.display();
+> 67 }
+> ~~~
+> Then compile and run.
+> ~~~
+> $ g++ destructor.cpp -o destructor
+> $ ./destructor
+> ~~~
+> {: .bash}
+> > ## Solution
+> > We get the following output:
+> > ~~~
+> > Parameterized constructor with size_in=10
+> > Vector: size=10, contents=(0,0,0,0,0,0,0,0,10,15)
+> > Vector: size=10, contents=(0,0,0,0,0,0,0,0,10,15)
+> > Destructor
+> > Destructor
+> > free(): double free detected in tcache 2
+> > Aborted (core dumped)
+> > ~~~
+> > {: .output}
+> > Except for the last two lines, the output looks similar to before. These last two lines are generated some time after the second destructor gets called. These lines indicate that we have the **double free** issue mentioned above. That is the same memory, in this case the `data` member of both the `a` and `b` objects point to the same memory. This happened because  line 63 invokes the compiler generated copy constructor which just does a straight member by member copy from object `a` to the new object `b`.  When the destructor gets called we try to free the memory pointed to by the `data` member twice, resulting in this error.
+> {: .solution}
+{: .challenge}

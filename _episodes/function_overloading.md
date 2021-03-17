@@ -102,4 +102,31 @@ public:
   }
 };
 ~~~
-You might like to use the `this` keyword to make it clear when you are and aren't referencing the class object, but it isn't needed in this example.
+You might like to use the `this` keyword to make it clear when you are and aren't referencing the class object, but it isn't needed in this example. In a later episode we will use the `this` keyword to solve a problem we wouldn't have been able to without it.
+
+> ## TODO: write me
+> <ol type="a">
+> <li markdown="1">
+> </li>
+> <li markdown="1">
+> </li>
+> <li markdown="1">
+> </li>
+> </ol>
+> > ## Solution
+> > <ol type="a">
+> > <li markdown="1">
+> > **NO**:
+> > </li>
+> > <li markdown="1">
+> > **YES**:
+> > </li>
+> > <li markdown="1">
+> > **NO**:
+> > </li>
+> > <li markdown="1">
+> > **NO**:
+> > </li>
+> > </ol>
+> {: .solution}
+{: .challenge}

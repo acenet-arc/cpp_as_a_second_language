@@ -20,7 +20,7 @@ A great deal of high-performance software is written in C, C++, and Fortran. Run
 
 In this workshop we will write a C++ program starting from an empty text file which incorporates many of the main concepts of C++. In doing so we will gain a foundation to allow us to start understanding other people's C++ programs.
 
-We will cover concepts such as object oriented programming, polymorphism, interfaces, and templates. Interfaces being a common, but certainly not the only, way to extend functionality in C++ programs and libraries.
+We will cover concepts such as object oriented programming, polymorphism, interfaces, and templates. Interfaces being a common, but certainly not the only, way to extend functionality in C++ programs and libraries. The idea of interfaces will be introduced during the 'Abstract classes' episode towards the end of the workshop.
 
 
 ## Are we all setup?

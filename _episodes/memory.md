@@ -169,6 +169,7 @@ Because we used the `new[]` version we must use the `delete[]` version to match 
 > > </ol>
 > {: .solution}
 {: .challenge}
+
 > ## How much memory is deallocated?
 > ~~~
 > int* createIntArray(int size){

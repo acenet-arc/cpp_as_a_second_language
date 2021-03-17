@@ -103,7 +103,7 @@ Note I used the `->` operator which acts like the `.` operator but works when yo
 > It is possible however, using [boost::bind](https://www.boost.org/doc/libs/1_66_0/libs/bind/doc/html/bind.html). Boost is a very large C++ library that adds heaps of additional functionality, but can be a bit of work to get and integrate into your projects, not to mention your compile times will definitely increase if you are using it.
 {: .callout}
 
-> ## Separating declarations and definitions
+> ## Separating declarations and implementations
 > 
 > It is common in both C and C++ to separate the declarations of structs, classes, and function from the implementation. To move a class member function implementation out of the class declaration you need to prefix it with the class namespace. For example if we moved our display function out of our class declaration we would have
 > ~~~
@@ -134,10 +134,12 @@ Build methods and tools is a huge topic in and of its self. Build tools are inde
 
 > ## Member function variables
 > ~~~
+> #include <iostream>
+> 
 > class A{
 > public:
 >   int foo;
->   void func(){
+>   void display(){
 >     std::cout<<foo<<" ";
 >   }
 > }
@@ -145,8 +147,8 @@ Build methods and tools is a huge topic in and of its self. Build tools are inde
 >   A a,b;
 >   a.foo=1;
 >   b.foo=2;
->   b.func();
->   a.func();
+>   b.display();
+>   a.display();
 > }
 > ~~~
 > What is the output from the above program when compiled and executed?
@@ -169,15 +171,100 @@ Build methods and tools is a huge topic in and of its self. Build tools are inde
 > </ol>
 > > ## Solution
 > > <ol type="a">
-> > <li markdown="1">**NO**: the memory which stores `foo` in `a` and `b` is separate so they have distinct values for each object. When the function `func` is invoked the `foo` variable takes on the value of the object the function is invoked on.
+> > <li markdown="1">**NO**: the memory which stores `foo` in `a` and `b` is separate so they have distinct values for each object. When the function `display` is invoked the `foo` variable takes on the value of the object the function is invoked on.
 > > </li>
 > > <li markdown="1">**NO**: same reason as answer a.
 > > </li>
-> > <li markdown="1">**NO**: not quite, note the order the functions are called in `b.func()` is called first then `a.func()`.
+> > <li markdown="1">**NO**: not quite, note the order the functions are called in `b.display()` is called first then `a.display()`.
 > > </li>
-> > <li markdown="1">**YES**: when `b.func()` is called, `foo` takes on the value of `2` and is printed out followed by a space. When `a.func()` is called, `foo` takes on the value of `1` and is printed out followed by a space.
+> > <li markdown="1">**YES**: when `b.display()` is called, `foo` takes on the value of `2` and is printed out followed by a space. When `a.display()` is called, `foo` takes on the value of `1` and is printed out followed by a space.
 > > </li>
 > > <li markdown="1">**No**: you would need to have quotes around `foo` to get this output so that it would be a string rather than a variable.
+> > </li>
+> > </ol>
+> {: .solution}
+{: .challenge}
+
+> ## Access modifiers revisited
+> ~~~
+>  1 #include <iostream>
+>  2 
+>  3 class A{
+>  4 public:
+>  5   int foo;
+>  6   void display(){
+>  7     std::cout<<"foo="<<foo<<" bar="<<bar<<"\n";
+>  8   }
+>  9 private:
+> 10   int bar;
+> 11   void setBar(int barIn){
+> 12     bar=barIn;
+> 13   }
+> 14 };
+> 15 
+> 16 int main(){
+> 17   A a;
+> 18   a.foo=1;
+> 19   a.bar=2;
+> 20   a.setBar(3);
+> 21   a.display();
+> 22 }
+> ~~~
+> Given the above `access_modifiers.cpp` file what happens when the above is compiled and run?
+> <ol type="a">
+> <li markdown="1">
+> Compiles with out issue and the following is printed out when run:
+> ~~~
+> foo=1 bar=3
+> ~~~
+> {: .output}
+> </li>
+> <li markdown="1">
+> The following compiler error is generated:
+> ~~~
+> access_modifiers.cpp: In function ‘int main()’:
+> access_modifiers.cpp:19:5: error: ‘int A::bar’ is private within this context
+>    19 |   a.bar=2;
+>       |     ^~~
+> access_modifiers.cpp:10:7: note: declared private here
+>    10 |   int bar;
+>       |       ^~~
+> access_modifiers.cpp:20:13: error: ‘void A::setBar(int)’ is private within this context
+>    20 |   a.setBar(3);
+>       |             ^
+> access_modifiers.cpp:11:8: note: declared private here
+>    11 |   void setBar(int barIn){
+>       |        ^~~~~~
+> ~~~
+> {: .output}
+> </li>
+> <li markdown="1">
+> The following compiler error is generated:
+> ~~~
+> access_modifiers.cpp: In function ‘int main()’:
+> access_modifiers.cpp:19:5: error: ‘int A::bar’ is private within this context
+>    19 |   a.bar=2;
+>       |     ^~~
+> access_modifiers.cpp:10:7: note: declared private here
+>    10 |   int bar;
+>       |       ^~~
+> ~~~
+> {: .output}
+> </li>
+> </ol>
+> > ## Solution
+> > <ol type="a">
+> > <li markdown="1">
+> > **NO**: the program actually fails to compile since both class members `bar` and `setBar` are declared as private, they can not be accessed by functions which are not members of the `A` class.
+> > </li>
+> > <li markdown="1">
+> > **YES**: both class members `bar` and `setBar` are private and can not be accessed outside class `A` member functions.
+> > </li>
+> > <li markdown="1">
+> > **NO**: while it is true that `bar` can not be accessed outside, the member function `setBar` is also a private member of the `A` class.
+> > </li>
+> > <li markdown="1">
+> > **NO**: while it is true that `setBar` can not be accessed outside, the member function `bar` is also a private member of the `A` class.
 > > </li>
 > > </ol>
 > {: .solution}

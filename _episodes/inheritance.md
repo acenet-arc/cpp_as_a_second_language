@@ -142,5 +142,5 @@ Vec3: (10,0,0)
 > C constructor called
 > ~~~
 > {: .output}
-> Base class constructors are called in the order they are listed in the classes inheritance list.
+> Base class constructors are called in the order they are listed in the class's inheritance list.
 {: .callout}
