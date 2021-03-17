@@ -64,8 +64,8 @@ a.data[9]=15
 
 ### Class access modifiers
 
-`public` is a class access modifier. It describes how the members of the class in the class after the access modifier is to be treated.
-* `public`: indicates that the following members can be accessed from anywhere
+`public` is a class access modifier. It describes how the members of the class after the access modifier are to be treated.
+* `public`: indicates that the following members can be accessed from anywhere.
 * `private`: indicates that the following members can be accessed only from within the class (this will make more sense when we talk about member functions).
 * `protected`: indicates that the following members can only be accessed by the class and any child classes (child classes will make more sense when we talk about inheritance).
 

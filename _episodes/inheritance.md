@@ -23,10 +23,12 @@ $ nano inheritance.cpp
 
 Then modify it to add a new class `Vec3` which inherits our previous `Vector` class. Another way of saying this is that the `Vec3` class is a derived class from the base class `Vector`. You can specify that one class will inherit another class's member variables and functions by adding a `:` after the new class name in the class declaration followed by an access method `public`, `private` or `protected` and then the name of the class to be inherited.
 
-Types of inheritance:
- * `public`: base class's public,protected, and private members are public,protected, and private in derived class.
- * `protected`: base class's public,protected, and private members are protected,protected, and private in derived class.
- * `private`: base class's public, protected, and private members are private, private, and private in derived class.
+Types of inheritance access modifiers:
+ * `public`: base class's public and protected members are public and protected in the derived class.
+ * `protected`: base class's public and protected members are protected and protected in the derived class.
+ * `private`: base class's public and protected members are private and private in the derived class.
+
+Private members in the base class are not accessible in the derived class. Exceptions to this can arise if using [friend declarations](https://en.cppreference.com/w/cpp/language/friend), which we will not cover.
 
 For more details about types of inheritance see this [cppreference.com](https://en.cppreference.com/w/cpp/language/derived_class) page.
 
@@ -144,3 +146,66 @@ Vec3: (10,0,0)
 > {: .output}
 > Base class constructors are called in the order they are listed in the class's inheritance list.
 {: .callout}
+
+> ## Private inheritance
+> ~~~
+> ...
+> 72 class Vec3:private Vector{
+> 73 public:
+> 74   Vec3():Vector(3){
+> 75   };
+> 76   void display(){
+> 77     std::cout<<"Vec3: ("<<data[0]<<","<<data[1]<<","<<data[2]<<")\n";
+> 78   }
+> 79 };
+> 80
+> 81 int main(){
+> 82   Vec3 a;
+> 83   a.data[0]=10;
+> 84   a.display();
+> 85 }
+> ~~~
+> If we take the most recent version of `inheritance.cpp` and copy it to `private_inheritance.cpp` and only change line 72 from `class Vec3:public Vector{` to `class Vec3:private Vector{` what will happen when we try to compile it?
+> <ol type="a">
+> <li markdown="1">
+> It will compile fine.
+> </li>
+> <li markdown="1">
+> Generate the following errors:
+> ~~~
+> private_inheritance.cpp: In member function ‘void Vec3::display()’:
+> private_inheritance.cpp:77:27: error: ‘int* Vector::data’ is private within this context
+>    77 |     std::cout<<"Vec3: ("<<data[0]<<","<<data[1]<<","<<data[2]<<")\n";
+>       |                           ^~~~
+> private_inheritance.cpp: In function ‘int main()’:
+> private_inheritance.cpp:83:5: error: ‘int* Vector::data’ is private within this context
+>    83 |   a.data[0]=10;
+>       |     ^~~~
+> ~~~
+> {: .output}
+> </li>
+> <li markdown="1">
+> Generate the following error:
+> ~~~
+> private_inheritance.cpp: In function ‘int main()’:
+> private_inheritance.cpp:83:5: error: ‘int* Vector::data’ is private within this context
+>    83 |   a.data[0]=10;
+>       |     ^~~~
+> ~~~
+> {: .output}
+> </li>
+> </ol>
+> > ## Solution
+> > <ol type="a">
+> > <li markdown="1">
+> > **NO**: private inheritance causes the derived class to inherit the base classes members as private members. In the main function the inherited member `data` is accessed which is not allowed and would generate a compiler error.
+> > </li>
+> > <li markdown="1">
+> > **NO**: While it is correct that it will generate a compiler error similar to this, the class member function `display` can access its own private members. Since the `data` member is `public` in the base class it will be inherited as a `private` member in the derived class.
+> > </li>
+> > <li markdown="1">
+> > **YES**: `data` will be inherited as a private member in the derived class and as such can not be accessed outside class member functions.
+> > </li>
+> > </ol>
+> {: .solution}
+{: .challenge}
