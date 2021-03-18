@@ -1,8 +1,8 @@
 ---
 layout: episode
 title: "Memory"
-teaching: 10
-exercises: 5
+teaching: 15
+exercises: 15
 questions:
 - "How do I allocate memory?"
 - "How do I free memory?"

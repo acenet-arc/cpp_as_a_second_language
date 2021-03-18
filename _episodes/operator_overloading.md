@@ -2,16 +2,18 @@
 layout: episode
 title: "Operator overloading"
 teaching: 10
-exercises: 10
+exercises: 5
 questions:
 - "Can we define operators for our classes?"
 - "Where can you define operators?"
 - "What operators can we define?"
 - "Does the order matter?"
 objectives:
-- ""
+- "Overload the `+` operator to allow us to add our Vectors together."
+- "Overload the `=` operator to assign one Vector to another."
 keypoints:
-- ""
+- "You can create your own operators for your classes."
+- "When any one of destructor, copy constructor, or assignment operator are defined you likely want to define all three (e.g. rule of three)."
 ---
 
 It would be nice to be able to add two of our `Vectors` together into one vector. We can use operator overloading to create a new `+` operator that will add two of our `Vectors` together.

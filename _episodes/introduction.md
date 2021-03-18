@@ -9,8 +9,6 @@ questions:
 objectives:
 - "Provide an overview of the course."
 - "Ensure everyone has their environments setup."
-keypoints:
-- ""
 start: true
 start_time: 720
 ---

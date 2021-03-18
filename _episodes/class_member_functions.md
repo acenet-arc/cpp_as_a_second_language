@@ -9,9 +9,10 @@ questions:
 - "How do you call a class member function?"
 - "What data can class member functions access?"
 objectives:
-- ""
+- "Add a class member function to display our object"
 keypoints:
-- ""
+- "Class member functions have access to object members implicitly."
+- "Access modifiers apply to both class member functions and variables."
 ---
 
 It might be nice to start to move some of the common things we do, such as displaying information about the Vector into a function to allow for easier reuse. C++ actually allows you to associate functions with classes, these functions are called members of a class, or member functions. Lets add a new `display` member function which will display our vector on the terminal.

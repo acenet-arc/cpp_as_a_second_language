@@ -8,9 +8,12 @@ questions:
 - "Are there different types of constructors?"
 - "Can resources be automatically freed?"
 objectives:
-- ""
+- "Add a constructors to allocate memory for our object."
+- "Add a destructor to deallocated memory for our object."
 keypoints:
-- ""
+- "Constructors are called when objects are first created."
+- "Destructors are called when objects go out of scope."
+- "Copy constructors are called when a new object is initialized from an existing object."
 ---
 
 We are still allocating and deallocating the memory for our Vector in the main function, however it would be nice to move this into the class so we don't have to think about it where we use our Vector. The best way to do this is to use constructors and destructors.

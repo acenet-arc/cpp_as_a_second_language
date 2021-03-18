@@ -2,7 +2,7 @@
 layout: episode
 title: "Making templates"
 teaching: 10
-exercises: 10
+exercises: 5
 questions:
 - "How do you create your own templates?"
 objectives:

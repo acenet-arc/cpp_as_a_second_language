@@ -1,15 +1,17 @@
 ---
 layout: episode
 title: "Function overloading"
-teaching: 5
-exercises: 5
+teaching: 10
+exercises: 0
 questions:
 - "What is function overloading?"
 - "What is the 'this' keyword?"
 objectives:
-- ""
+- "Add a member function to only display part of our Vector."
 keypoints:
-- ""
+- "Any function can be overloaded, class member function or stand alone function"
+- "Overloaded functions are only distinguished by their parameters and not their return types."
+- "The `this` keyword allows you to explicitly reference the object within a member function."
 ---
 
 It might be nice to not always have a way to display only part of our vector, particularly if it is long.

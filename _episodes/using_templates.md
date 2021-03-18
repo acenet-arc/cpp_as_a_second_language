@@ -2,16 +2,16 @@
 layout: episode
 title: "Using templates"
 teaching: 10
-exercises: 10
+exercises: 5
 questions:
 - "What are templates?"
 - "What is generic programming?"
 - "What is the STL?"
 - "How do you use the STL?"
 objectives:
-- ""
+- "Use the STL for a vector"
 keypoints:
-- ""
+- "STL containers can hold any datatype"
 ---
 
 Templates allow for **generic types**. With templates it is possible to write a function or a class which can operator on any type of data. For example our `Vector` class only works with `int`s but using templates we could create it in such a way that it would work with any type, including types created by us or other programmers.

@@ -2,14 +2,15 @@
 layout: episode
 title: "Inheritance"
 teaching: 10
-exercises: 10
+exercises: 5
 questions:
 - "What is inheritance?"
 - "What is inheritance used for?"
 objectives:
-- ""
+- "Create a derived class specialized for 3D vectors"
 keypoints:
-- ""
+- "Inheritance allows reuse of code in related classes."
+- "Inheritance can happen in one of three ways `public`, `protected` or `private` and affects how the inherited members are accessed in the derived class."
 ---
 
 We have so far been using our `Vector` class to store some number of integers. However, what if we instead wanted to have a vector that we could use for 3D positions, would we have to build a new class to do this from scratch or could we somehow reuse what we have already done for our more general `Vector` class? The answer is yes we can reuse much of what we have already done, and we can do that using **inheritance**.
