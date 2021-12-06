@@ -1,0 +1,9 @@
+* I'm not sure the instructions on Nano were useful.  Did we actually have participants who didn't already know how to use one editor or another?
+* If no one picks a wrong answer (e.g. "10 bytes" in the memory allocation quiz), don't spend time explaining it.  Concentrate on the wrong answers submitted, and reiterate the teaching relevant to that misconception.
+* Remember to "End Polling" and "Share Results" when you START talking about the answers to a quiz.  And close the polling window when you're DONE talking about that particular poll.  I was trying to do those for you today, but coordinating my timing with yours was tricky.
+* The quiz on access modifiers (foo private, bar public, choose the error message that'll appear) was clunky.  Is there something we could do that involves reading the *real* error message and voting on what to do about it, or what it means?
+* Same clunkiness later in class_member_functions.  Plus the bogus "D" answer on that one 
+
+Feed back: https://docs.google.com/spreadsheets/d/1-SRX7V59qRbHEm1FD32son_RCEPN7ftqrKj3MVz19BE/edit#gid=400452365
+
+Skipped last episode on making templates, wasn't enough time. Rushed through some of the other content a little fast in order to make the 4hr mark. I would also have liked to have better exercise coverage.
