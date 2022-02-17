@@ -36,7 +36,7 @@ Three main components added:
 There are certainly many other bits that C++ adds, but I think these are conceptually most important additions.
 
 ## C and C++ interoperability
-* You can often compile C programs as C++ programs (form comments/details see this [isocpp.org](https://isocpp.org/wiki/faq/c#is-c-a-subset) page on the topic).
+* You can often compile C programs as C++ programs (for comments/details see this [isocpp.org](https://isocpp.org/wiki/faq/c#is-c-a-subset) page on the topic).
 * However, you can not compile C++ programs as C programs.
 
 ## Versions of C++ and its Complexity
