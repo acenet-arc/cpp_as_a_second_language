@@ -5,10 +5,13 @@ teaching: 10
 exercises: 5
 questions:
 - "What is a virtual function?"
+- "What is polymorphism?"
 objectives:
-- ""
+- "Explore virtual functions"
+- "See polymorphism in action"
 keypoints:
-- ""
+- "Polymorphism allows different member functions to be called depending on the object's base class"
+- "Polymorphism is achieved using the `virtual` keyword in function declarations"
 ---
 
 Previously we have been displaying multiple vectors at once, it would be nice to also include a label when we output them to identify that particular vector. Lets add a new function which takes a pointer to a `Vector` and a name and displays both.
@@ -59,9 +62,9 @@ b=Vector: size=3, contents=(22,0,0)
 c=Vector: size=6, contents=(10,0,0,22,0,0)
 ~~~
 {: .output}
-Looking at the output we can see that the `display` member function of the original `Vector` class is being called here even in the cases for `a` and `b` which are declared as `Vec3`'s. What is going on here? What is happening is that when we call our `nameAndDisplay` function our `Vec3`s are being converted to `Vector`s. Since `Vec3` inherits the `Vector` class this is actually allowed and is one of the nice things about inheritance. So that without any extra work we can still use our `nameAndDisplay` with our `Vec3` objects even though they get converted to `Vectors` for use in the function. However, that means that in our `nameAndDisplay` function the wrong `display` member function is getting called.
+Looking at the output we can see that the `display` member function of the original `Vector` class is being called even in the case of `a` and `b` which are declared as `Vec3`'s. What is going on here? When we call our `nameAndDisplay` function our `Vec3`s are being converted to `Vector`s. Since `Vec3` inherits the `Vector` class this is actually allowed and is one of the nice things about inheritance. Without any extra work we can still use our `nameAndDisplay` function with our `Vec3` objects even though they get converted to `Vectors` for use in the function. However, that means that in our `nameAndDisplay` function, the wrong `display` member function is getting called.
 
-It would be nice if there was a way to not have to create two `nameAndDisplay` functions one for each of `Vector` and `Vec3`. It turns out there is a way to do that. Using the `virtual` keyword. The `virtual` keyword can be used on a class member function to indicate that, at run time, it should check to see if this object is a class which was derived from the base class. If so, check to see if the `virtual` member function has been overridden in the derived class, if it has use that instead of the member function in the base class. In other words, we add the `virtual` keyword to our `display` member function in the `Vector` class and then our `nameAndDisplay` function will call either the `display` defined in the `Vector` class if the passed object was originally a `Vector` or it will call the `display` member function defined in the `Vec3` class if the object was originally a `Vec3`. That's a pretty cool trick for a statically typed language like C and C++!
+It would be nice if we did not have to create two `nameAndDisplay` functions one for each of `Vector` and `Vec3`. It turns out there is a way to do that. Using the `virtual` keyword. The `virtual` keyword can be used on a class member function to indicate that, at run time, it should check to see if this object is a class which was derived from the base class. If so, check to see if the `virtual` member function has been overridden in the derived class, if it has use that instead of the member function in the base class. In other words, we add the `virtual` keyword to our `display` member function in the `Vector` class and our `nameAndDisplay` function will call either the `display` defined in the `Vector` class if the passed object was originally a `Vector` or it will call the `display` member function defined in the `Vec3` class if the object was originally a `Vec3`. That's a pretty cool trick for a statically typed language like C and C++!
 
 Lets try it out.
 
@@ -118,11 +121,11 @@ c=Vector: size=6, contents=(10,0,0,22,0,0)
 ~~~
 {: .output}
 
-The act of a pointer to a `Vector` class being treated differently depending on if it points to the original, or different child classes is something that is referred to as **polymorphism**. 
+When the pointer to a `Vector` class is treated differently depending on whether it points to a `Vector` class, or child classes is something that is referred to as **polymorphism**.
 
 This is a pretty cool thing, in that you can have a bunch of objects of different classes being handled by the same function with potentially different behaviours if they all inherit the same base class.
 
-> ## Manual polymophism
+> ## Manual polymorphism
 > I would like to point out that this sort of polymophic flexibility can be achieved in a somewhat manual sense using the basic features of C. The example below utilizes `void*` pointers and casting between different pointer types. The file shown bellow, `polymanual.cpp`, demonstrates one way this similar level of flexibility of inheritance and virtual functions could be achieved. It should also be noted that while the below code may seem like it would obviously be less perfromant than the virtual method, this difference might not be as large as you think based purely on the amount of lines of code, as polymophism using the `virtual` keyword does still require run time lookups into virtual function tables. If possible it is advised to avoid `virtual` member functions in performance critical code, and of course always profile to know what is performance critical.
 > ~~~
 > #include <iostream>

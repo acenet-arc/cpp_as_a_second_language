@@ -54,6 +54,8 @@ int main(){
 ~~~
 [inheritance.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/inheritance.cpp)
 </div>
+We also added a default constructor `Vec3()` which calls the constructor from the base class with a size of `3` specified, `Vector(3)`.
+
 Our new `Vec3` class can be thought of as a combination of the two class declarations. First the original `Vector` class, then with the changes added for the `Vec3` class.
 
 ~~~
@@ -95,7 +97,7 @@ int main(){
 ~~~
 [inheritance.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/inheritance_member_function.cpp)
 </div>
-The new `display` member function declared in the `Vec3` class will now replace the `Vector` classes `display` member function for `Vec3` objects.
+The new `display` member function declared in the `Vec3` class will now replace the `Vector` class's `display` member function for `Vec3` objects.
 
 Lets build and run it to see the results.
 ~~~

@@ -2,7 +2,13 @@
 layout: episode
 title: "Wrapping up"
 teaching: 2
-exercises: 
+exercises:
+questions:
+- "What else should I learn?"
+- "Where can I learn it?"
+objectives:
+- "Know some other important, and less important components of C++ you might like to learn."
+- "Know some good resources you can use learn more about C++."
 ---
 The topics in C and C++ are vast, I have only covered the core concepts and have left out many newer features added to the language.
 

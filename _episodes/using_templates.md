@@ -9,14 +9,16 @@ questions:
 - "What is the STL?"
 - "How do you use the STL?"
 objectives:
-- "Use the STL for a vector"
+- "Use the STL vector template."
 keypoints:
-- "STL containers can hold any datatype"
+- "STL containers can hold any datatype."
+- "Templates generate type specific implementation code at compile time."
+- "Heavy use of templates can increase compile times."
 ---
 
-Templates allow for **generic types**. With templates it is possible to write a function or a class which can operator on any type of data. For example our `Vector` class only works with `int`s but using templates we could create it in such a way that it would work with any type, including types created by us or other programmers.
+Templates allow for **generic types**. With templates it is possible to write a function or a class which can operator on any type (or class) of data. For example our `Vector` class only works with `int`s but using templates we could create it in such a way that it would work with any type, including types created by us or other programmers.
 
-However, before we rush off and learn about creating templates to further generalize and extend our `Vector` class it turns out that there is already a class available in the [standard template library](https://www.cplusplus.com/reference/stl/) which does something similar. The standard template library (or STL) is composed of many different types of container classes, `vector`, `queue`, `stack`, `list`, `set`, `map` ... which can be used to contain basic or user created types. Lets try out using the STL `vector` class as an example of how to use these containers.
+However, before we rush off and learn about creating templates to further generalize and extend our `Vector` class it turns out that there is already a class available in the [standard template library](https://www.cplusplus.com/reference/stl/) which does something similar. The standard template library (or STL) has many different types of container classes, `vector`, `queue`, `stack`, `list`, `set`, `map` ... which can be used to contain basic or user created types. Lets try out using the STL `vector` class as an example of how to use these containers.
 
 ~~~
 $ nano stl_vector.cpp
@@ -57,7 +59,7 @@ $ ./stl_vector
 ~~~
 {: .output}
 
-The container `std::vector` is a template class. What this means is that when we have a line in our code like `std::vector<int>` and we compile the code, the compiler will create a vector class that works for `int` data types at compile time based on the template provided in the 'vector' header we included with `#include <vector>`. If we had multiple different lines with `std::vector<some type>` a new version would be created at compile time for each type. This means that compile times can get rather lengthy when templates re used heavily. However, putting this time and work into compile time can sometimes result in faster code at run time as different code paths are decided at compile time rather than run time.
+The container `std::vector` is a template class. What this means is that when we have a line in our code like `std::vector<int>` and we compile the code, the compiler will create a vector class that works for `int` data types at compile time based on the template provided in the 'vector' header we included with `#include <vector>`. If we had multiple different lines with `std::vector<some type>` a new version would be created at compile time for each type. This means that compile times can get rather lengthy when templates are used heavily. However, putting this time and work into compile time can sometimes result in faster code at run time as different code paths are decided at compile time rather than run time. Depending on your situation fast, write, compile, test iterations might be important to you, or your priority might be to trade compile time for faster running executables.
 
 
 > ## Iterators
@@ -66,10 +68,10 @@ The container `std::vector` is a template class. What this means is that when we
 > do not behave like arrays. For example it will not work for `std::list`, while the iterator method shown below will work for most STL containers (e.g. `array`, `list`, `map`, `set`, `vector`).
 > ~~~
 > std::vector<int> a;
-> std::vector<int::iterator it;
+> std::vector<int>::iterator it;
 > for(it=a.begin();it!=v.end();++it){
 >   std::cout<<*it<<"\n";
 > }
 > ~~~
-> For more information about using iterators see [this programming tutorial][https://www.cprogramming.com/tutorial/stl/iterators.html]
+> For more information about using iterators see [this programming tutorial](https://www.cprogramming.com/tutorial/stl/iterators.html)
 {: .callout}

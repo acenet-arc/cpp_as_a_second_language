@@ -7,9 +7,13 @@ questions:
 - "What makes a class abstract?"
 - "What are abstract classes used for?"
 objectives:
-- ""
+- "Learn what makes a class abstract"
+- "Learn why you might want to use an abstract class"
+- "See how you can use abstract classes to make interfaces to allow for extensibility of code."
 keypoints:
-- ""
+- "A pure virtual function is a function that does not have an implementation."
+- "An abstract class is a class that has one or more virtual member functions."
+- "Abstract classes can not be used to create objects."
 ---
 
 Taking the idea of polymorphism and inheritance mentioned previously a little further, what if we wanted to have a more general base class which we could pass to a function to allow displaying of any future class we might create? We could create what is known as an abstract base class.
@@ -57,7 +61,7 @@ We have create a new class `Displayable`, this is an abstract class because of t
 
 Abstract classes can not be used to create objects directly as they are missing the implementation of at least one member function. This is part of the reason they are called 'abstract' because they can't be directly used. However, they can be used as base classes by other classes. In our above example we now have the `Vector` class inheriting the abstract class `Displayable`. We have also made our `nameAndDisplay` function take a pointer to a `Displayable` rather than a `Vector`. Now we can pass that function a pointer to any object that is of a class which inherits the `Displayable` abstract class. Classes which inherit an abstract class must override all the pure virtual member functions in order to not be abstract classes themselves.
 
-We are using our `Displayable` abstract class in a way that is often called an **interface**. It is called an interface because it defines function prototypes which must be implemented in any class derived from it. In this way it guarantees that any usable (i.e. non-abstract) derived class will have those functions implemented that can be called in the way they have been defined. This can then act as an interface between user created code and the library which defined it without the library having to know the details of the user derived classes except that they have implemented the functions defined in the abstract base class.
+We are using our `Displayable` abstract class in a way that is often called an **interface**. It is called an interface because it defines a function prototype which must be implemented in any class derived from it. In this way it guarantees that any usable (i.e. non-abstract) derived class will have those functions implemented that can be called in the way they have been defined. This can then act as an interface between user created code and the library which defined it without the library having to know the details of the user derived classes except that they have implemented the functions defined in the abstract base class. Those library functions can then operate on any user classes which inherit the correct library defined abstract classes and implement any virtual functions they might contain.
 
 ~~~
 $ g++ abstract.cpp -o abstract
