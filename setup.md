@@ -40,7 +40,7 @@ $ ssh graham.computecanada.ca
 ### If using our virtual cluster
 Try connecting to our virtual training cluster by running the below command in your terminal.
 ~~~
-$ ssh user01@nova.ace-net.training
+$ ssh user01@cpp.ace-net.training
 ~~~
 {: .bash}
 You should get prompted for a password. Press Ctrl+C to exit without supplying a password. We will provide one for you at the beginning of the workshop.

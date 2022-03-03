@@ -152,7 +152,7 @@ Build methods and tools is a huge topic in and of its self. Build tools are inde
 >   a.display();
 > }
 > ~~~
-> What is the output from the above program when compiled and executed?
+> What is the output when the above file `member_function_variables.cpp` is compiled and executed?
 > <ol type="a">
 > <li markdown="1">
 > 1 1 

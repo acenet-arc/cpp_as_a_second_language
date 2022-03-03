@@ -9,7 +9,7 @@ questions:
 objectives:
 - "Learn to work with dynamic memory"
 keypoints:
-- "Every use of `new`/`new[]` should be match by a `delete`/`delete []`."
+- "Every use of `new`/`new []` should be match by a `delete`/`delete []`."
 - "The amount of dynamic memory allocated can be determined at runtime."
 - "Need to be careful about incorrect access and especially modification of memory."
 ---
@@ -22,7 +22,7 @@ C and C++ are fairly low level languages and as such you can manage your program
 ## Allocation
 In C you use `malloc` to allocate memory, but in C++ you should use `new`. It is possible to use `malloc` but some additional steps need to be taken to ensure it works properly with C++ classes.
 
-There are two flavors of `new` the straight up `new` keyword, or the array version `new[]`. The first will declare a new variable/object of the given type like:
+There are two flavors of `new` the straight up `new` keyword, or the array version `new []`. The first will declare a new variable/object of the given type like:
 ~~~
 #include <iostream>
 
@@ -76,6 +76,10 @@ Generally it is a good idea to match every `new` and `new[]` allocation with a m
 
 ## Deallocation
 To deallocate or free memory in `C` the `free` function is used, however, in C++ you should use the `delete` operator instead. It also comes in two flavors `delete` and `delete[]` to match the two flavors of `new` and `new[]`. Lets free the memory we allocated above.
+
+~~~
+$ nano memory.cpp
+~~~
 
 <div class="gitfile" markdown="1">
 ~~~

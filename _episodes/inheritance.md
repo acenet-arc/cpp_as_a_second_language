@@ -25,9 +25,9 @@ $ nano inheritance.cpp
 Then modify it to add a new class `Vec3` which inherits our previous `Vector` class. Another way of saying this is that the `Vec3` class is a derived class from the base class `Vector`. You can specify that one class will inherit another class's member variables and functions by adding a `:` after the new class name in the class declaration followed by an access method `public`, `private` or `protected` and then the name of the class to be inherited.
 
 Types of inheritance access modifiers:
- * `public`: base class's public and protected members are public and protected in the derived class.
- * `protected`: base class's public and protected members are protected and protected in the derived class.
- * `private`: base class's public and protected members are private and private in the derived class.
+ * `public`: base class's public and protected members are public and protected in the derived class respectively.
+ * `protected`: base class's public and protected members are protected and protected in the derived class respectively.
+ * `private`: base class's public and protected members are private and private in the derived class respectively.
 
 Private members in the base class are not accessible in the derived class. Exceptions to this can arise if using [friend declarations](https://en.cppreference.com/w/cpp/language/friend), which we will not cover.
 

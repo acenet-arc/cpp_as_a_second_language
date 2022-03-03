@@ -126,7 +126,7 @@ Hello, world!
 > </li>
 > <li markdown="1">a datatype which can have multiple members like a struct
 > </li>
-> <li markdown="1">a datatype which can have only a single value like `int`,`float`,etc.
+> <li markdown="1">a datatype which can contain only a single value like `int`,`float`,etc.
 > </li>
 > </ol>
 > > ## Solution

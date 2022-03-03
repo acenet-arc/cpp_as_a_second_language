@@ -49,7 +49,7 @@ public:
 
   void display(int num){
     int numToDisplay=size;
-    if(num<size){
+    if(num<size && num>=0){
       numToDisplay=num;
     }
 

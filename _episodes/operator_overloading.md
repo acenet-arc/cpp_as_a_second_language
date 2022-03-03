@@ -22,6 +22,8 @@ Operator overloading works similar to how function overloading works.
 
 To create a new operator function you need to use the `operator` keyword followed by the operator you wish to overload, for example `operator+`. The rest of the syntax for creating an operator is similar to how a function is created.
 
+Our new `+` operator will return a `Vector` object and will have a `Vector` object as an argument. In a statement like `Vector c=a+b;` where `a` and `b` are objects of type `Vector` you can think of it being like `Vector d=a.operator+(b);` and in fact you can actually use it like that if you wish. In this way `operator+` acts exactly like any other class member function, except that it can also be invoked directly like `a+b` rather that using the `.` and the full function name.
+
 Lets add a new `+` operator to our `Vector` class. 
 
 ~~~
@@ -73,8 +75,6 @@ int main(){
 [operator.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/operator%2B.cpp)
 </div>
 
-This new `+` operator returns a `Vector` object and has a `Vector` object as an argument. In a statement like `Vector c=a+b;` where `a` and `b` are objects of type `Vector` you can think of it being like `Vector d=a.operator+(b);` and in fact you can actually use it like that if you wish. In this way `operator+` acts exactly like any other class member function, except that it can also be invoked directly like `a+b` rather that using the `.` and the full function name.
-
 Lets try out the new operator
 ~~~
 $ g++ operator.cpp -o operator
@@ -95,7 +95,7 @@ For a list of operators and where each can be declared see:
 [https://www.cplusplus.com/doc/tutorial/templates/](https://www.cplusplus.com/doc/tutorial/templates/)
 
 ## operator=
-We have so far used the `+` operator we defined like so, `Vector a,b; Vector c=a+b;`, however if we wanted to use it this way `Vector a,b,c; c=a+b;` we would have an issue. So far we have been relying on our copy constructor which gets called when we do `Vector c=`some other vector, however when we do `c=a+b` it will invoke the compiler created assignment operator (`operator=`) which will just copy our pointers over. Then when the destructors gets called for the two `Vector` objects with the same pointer it will cause a double free error. This exactly the same thing that would happen if we didn't create our copy constructor for exactly the same reason. Lets add an assignment operator now.
+We have so far used the `+` operator we defined like so, `Vector a,b; Vector c=a+b;`, however if we wanted to use it this way `Vector a,b,c; c=a+b;` we would have an issue. So far we have been relying on our copy constructor which gets called when we do `Vector c=`some other vector, however when we do `c=a+b` it will invoke the compiler created assignment operator (`operator=`) which will just copy our pointers over. Then when the destructors gets called for the two `Vector` objects with the same pointer it will cause a double free error. This is exactly the same thing that would happen if we didn't create our copy constructor for exactly the same reason. Lets add an assignment operator now.
 
 <div class="gitfile" markdown="1">
 ~~~
@@ -106,7 +106,7 @@ public:
   int size;
   int* data;
   
-  void operator=(Vector rhs){
+  void operator=(const Vector& rhs){
     if(&rhs!=this){
       
       delete[] data;
@@ -150,7 +150,7 @@ The Rule of Three is a general rule that states, if any one of the three followi
 * Copy constructor
 * Assignment operator
 
-In our case we saw why that is. We allocated memory in our constructor and when we created a new object from a previous object either using the compiler created `=` operator or copy constructor, we ended up with a double free when our destructor was called. The compiler created copy constructor and assignment operator only copied the pointer to the data, they didn't allocate the objects own memory and copy values over from the other object.
+In our case we saw why that is. We allocated memory in our constructor and when we created a new object from a previous object either using the compiler created `=` operator or copy constructor, we ended up with a double free when our destructor was called. The compiler created copy constructor and assignment operator only copied the pointer to the data, they didn't allocate the object's own memory and copy values over from the other object.
 
 > ## Mixing types with operators
 > You can add additional overloaded versions of an operator to allow different types to be added together. For example if we wanted to be able to add an `Vector` object and an `int` we could add the following member function to our `Vector` class:
@@ -203,10 +203,10 @@ In our case we saw why that is. We allocated memory in our constructor and when 
 > 82   c.display();
 > 83 }
 > ~~~
-> Line 80 is `c=a+b` what would line 82, `c.display()` print out if line 80 where `c=b+a` instead?
+> Line 81 is `c=a+b` what would line 82, `c.display()` print out if line 81 where `c=b+a` instead?
 > <ol type="a">
 > <li markdown="1">
-> `Vector: size=20, contents=(0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,0,10,15)` the same as before the the `+` operator is commutative, in other words the order doesn't matter.
+> `Vector: size=20, contents=(0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,0,10,15)` the same as before, the `+` operator is commutative, in other words the order doesn't matter.
 > </li>
 > <li markdown="1">
 > `Vector: size=20, contents=(0,0,0,0,0,0,0,0,10,15,0,0,0,0,0,0,0,0,0,15)` the contents of `b` has been added to the new vector first followed by the contents of `c`.

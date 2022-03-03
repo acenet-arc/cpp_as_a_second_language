@@ -33,7 +33,7 @@ Three main components added:
 * Classes: forms the basis for what is known as Object Oriented Programming (OOP)
 * Templates: allows for generic programming, write code that can be used on multiple data types
 
-There are certainly many other bits that C++ adds, but I think these are conceptually most important additions.
+There are certainly many other bits that C++ adds, but these are the conceptually most important additions.
 
 ## C and C++ interoperability
 * You can often compile C programs as C++ programs (for comments/details see this [isocpp.org](https://isocpp.org/wiki/faq/c#is-c-a-subset) page on the topic).
