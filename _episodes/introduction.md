@@ -10,7 +10,7 @@ objectives:
 - "Provide an overview of the course."
 - "Ensure everyone has their environments setup."
 start: true
-start_time: 720
+start_time: 780
 ---
 
 ## Overview/Motivation

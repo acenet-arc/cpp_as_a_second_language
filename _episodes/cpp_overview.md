@@ -1,16 +1,19 @@
 ---
 layout: episode
 title: "Where does C++ fit in?"
-teaching: 5
+teaching: 8
 exercises: 0
 questions:
 - "How does C++ compare to other languages?"
+- "What is C++ used for?"
+- "When should I use C++?"
 - "What is C++'s relationship to C?"
 objectives:
 - "Understand C++ role in programming"
 keypoints:
 - "C++ is a low level language offering great flexibility."
 - "C++ allows the creation of very performant programs."
+- "If starting from scratch use a higher level language such as Python and convert performance critical parts to C++."
 - "Do not try to use all the features of C++"
 ---
 
@@ -26,7 +29,19 @@ keypoints:
   * Specialized for numerical computing
   * Awkward for some tasks (I/O, string manipulation, code reuse)
   * Smaller user community
-  
+
+## What is C/C++ used for?
+C++ is used for lots of things, which is why it has a much larger user community than say Fortran for example.
+* Operating systems: Windows, MacOS, iOS, Linux
+* Web browsers: Firefox, Chrome
+* Applications: Adobe Photoshop, Spotify, MySQL
+* Games
+* Research software
+
+## When should I use C++?
+If a program you are working on already uses C++, or uses C++ to write extensions. In new programs, if you aren't writing highly performance critical programs, something like Python might be a better choice. It is easy to use and you can write your programs much faster. When you find slow parts of your code use libraries that can do those parts faster, e.g. numpy. If there isn't a library for it, use Cython to generate C/C++ code from your python by adding type information to your variables. See our parallel computing summer school [materials on using Cython](https://acenet-arc.github.io/ACENET_Summer_School_Dask/cython/index.html) for more information about how to get started using Cython. While converting your Python code to Cython it can be useful to know some C/C++ and can give you more flexibility
+in how you do it, for example you could write your performance critical bits directly using C++ as python modules.
+
 ## What does C++ add to C?
 Three main components added:
 * Function overloading: multiple functions can be defined with the same name which are distinguished by the type and number of arguments they are given.

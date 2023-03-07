@@ -127,7 +127,7 @@ Note I used the `->` operator which acts like the `.` operator but works when yo
 > }
 > ~~~
 > 
-> this could allow you to put your class member functions into a separate ".cpp" file and have your class definition in a ".h" file. This allows you to gain access to your class definition in other ".cpp" files where you might want to use your class. This is a common and fairly standard practice but not required. It allows you to compile each ".cpp" file separately and then link it together in the final exe. One alternative build method is what are called "Unity builds", where all the files are `#included` it into a single compilation unit (see [wiki page on single compilation unit](https://en.wikipedia.org/wiki/Single_Compilation_Unit) for a quick explanation).
+> this could allow you to put your class member functions into a separate ".cpp" file and have your class definition in a ".h" file. This allows you to gain access to your class definition in other ".cpp" files where you might want to use your class. This is a common and fairly standard practice but not required. It allows you to compile each ".cpp" file separately and then link it together in the final exe. One alternative build method is what is called "Unity builds", where all the files are `#include`'d into a single compilation unit (see [wiki page on single compilation unit](https://en.wikipedia.org/wiki/Single_Compilation_Unit) for a quick explanation).
 {: .callout}
 > ## Quick comment on build tools
 Build methods and tools is a huge topic in and of its self. Build tools are independent of the compiler you use but allow you to specify dependencies and commands to run to build the components of your exectubale. I usually prefer to keep this as simple as possible and use the [GNU make](https://www.gnu.org/software/make/) tool. If I really want to get fancy I may sometimes use the [GNU Autotools](https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html) which allows you to make a distribution package that would follow the `./configure` `make` `make install` process. On Windows I actually also use GNU make, see [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm). There are lots of build tools out there, but make has been around for a long time and as far as I can tell is the simplest I have come across.
@@ -165,9 +165,6 @@ Build methods and tools is a huge topic in and of its self. Build tools are inde
 > </li>
 > <li markdown="1">
 > 2 1
-> </li>
-> <li markdown="1">
-> foo foo
 > </li>
 > </ol>
 > > ## Solution
