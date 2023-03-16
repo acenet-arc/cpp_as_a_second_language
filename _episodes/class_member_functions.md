@@ -177,8 +177,6 @@ Build methods and tools is a huge topic in and of its self. Build tools are inde
 > > </li>
 > > <li markdown="1">**YES**: when `b.display()` is called, `foo` takes on the value of `2` and is printed out followed by a space. When `a.display()` is called, `foo` takes on the value of `1` and is printed out followed by a space.
 > > </li>
-> > <li markdown="1">**No**: you would need to have quotes around `foo` to get this output so that it would be a string rather than a variable.
-> > </li>
 > > </ol>
 > {: .solution}
 {: .challenge}
