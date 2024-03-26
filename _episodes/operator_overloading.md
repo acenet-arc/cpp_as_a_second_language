@@ -188,7 +188,7 @@ In our case we saw why that is. We allocated memory in our constructor and when 
 > ~~~
 {: .callout}
 
-> ## Wich side of an operator?
+> ## Which side of an operator?
 > Our main function above looks like so:
 > ~~~
 > 73 int main(){

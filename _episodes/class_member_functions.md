@@ -97,9 +97,26 @@ int main(){
 ~~~
 Note I used the `->` operator which acts like the `.` operator but works when you have a pointer to the object rather than the object itself. I also used the `&` operator to get the address of the object to pass to the function.
 
+> ## Pass by Value or by Reference
+> C++ allows both pass by value and pass by reference, where as C is only pass by value. C++ allows the following function syntax:
+> ~~~
+> void display(Vector &a){
+>   std::cout<<"Vector: size="<<a.size;
+>   ...
+> }
+> 
+> int main(){
+> Vector a;
+> ...
+> display(a);
+> ...
+> }
+> ~~~
+> Here, `a` is passed by reference (e.g. it uses a pointer under the hood). But allows you to use the syntax you would usually use with the object its self rather than that for a pointer. For example `a.size` rather than `a->size` within the `display` function. Likewise, when calling the function `display(a)` the address operator `&` isn't needed. This is merely a syntactical change otherwise the behaviour is the same as if you passed a pointer to `a` by value.
+{: .callout}
 
 > ## Class member functions and function pointers
-> One wrinkle with using class member functions is if you want to use pointers to those functions, say for a callback. It can get very tricky because the function has access to and potentially uses data from within the object it is called from. If you use the function pointer in isolation as you would normally the function has no knowledge of which object it should access the data it might need from. If you need to reference a class member function as a function pointer, the simplest solution is to make it a stand alone function which has a parameter of the class type as is illustrated above.
+> There is one wrinkle with using pointers to class member functions. If you want to use pointers to those functions, say for a callback. It can get very tricky because the function has access to and potentially uses data from within the object it is called from. If you use the function pointer in isolation as you would normally the function has no knowledge of which object it should access the data it might need from. If you need to reference a class member function as a function pointer, the simplest solution is to make it a stand alone function which has a parameter of the class type as is illustrated above.
 >
 > It is possible however, using [boost::bind](https://www.boost.org/doc/libs/1_66_0/libs/bind/doc/html/bind.html). Boost is a very large C++ library that adds heaps of additional functionality, but can be a bit of work to get and integrate into your projects, not to mention your compile times will definitely increase if you are using it.
 {: .callout}

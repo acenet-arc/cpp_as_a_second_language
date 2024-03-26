@@ -70,7 +70,19 @@ a[9]=15
 
 In this example we allocate enough memory to hold 10 integers and the pointer `a` points to the beginning of this memory. The `[]` operator is used to index into a given part of this memory and allow one to access and modify that memory.
 
-Note that memory allocated using `new` or `new[]` is not freed if pointers that point to it go out of scope. This is different than memory that is allocated in statements like `int a[10];`. This can allow great flexibility in how the memory is used. By passing a pointer to different parts of your code it can access and modify that memory without having to copy the data. This can have huge performance improvements and avoids wasted memory. However it does mean that the programmer is responsible for keeping track of the memory and freeing it.
+Memory allocated using `new` or `new[]` is not freed if pointers that point to it go out of scope. This is different than memory that is allocated in statements like `int a[10];`. This can allow great flexibility in how the memory is used. By passing a pointer to different parts of your code it can access and modify that memory without having to copy the data. This can have huge performance improvements and avoids wasted memory. However it does mean that the programmer is responsible for keeping track of the memory and freeing it.
+
+> ## Scope
+> Remember that in C and C++ the `{` and `}` define scope. The below code example:
+> ~~~
+> int a=2;
+> {
+>   int a=10;
+> }
+> std::cout<<"a="<<a<<"\n";
+> ~~~
+> will print out `a=2`, since inside the open `{` and close `}` brackets a new `a` is created and initialized to 10, but only has scope within that code block. This goes for any code block, for loops, functions, if blocks etc.
+{: .callout}
 
 Generally it is a good idea to match every `new` and `new[]` allocation with a matching `delete` or `delete[]`. In the above program we haven't done this, and in this simple situation it actually doesn't cause any problems. When our program ends that memory is freed up, however if that new were inside a large loop and we didn't take special care to track memory, would could end up with a leak of unusable memory that won't be freed until the program ends, which in severe cases could eventually causes us to run out of memory before our program finishes executing.
 

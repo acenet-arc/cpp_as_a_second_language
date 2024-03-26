@@ -49,7 +49,7 @@ Hello, world!
 
 ## Dissecting your first C++ program
 ### Objects and classes
-* `cout` is an object, an object can be thought of as a particular instantiation of a class, think: `int a;` `a` is an instantiation of an `int`.
+* `cout` is an object, an object can be thought of as a particular instantiation of a class. <br/>Think: `int a;` `a` is an instantiation of an `int`. In this example `int` would be considered the class and `a` would be the object. Though in this case `int` is a basic type and not actually a class but the relationship between `int` and `a` in the example is exactly the same as the relationship between an `class` and an `object`.
 * A class is very much like a C struct with some associated functions.
 * Classes can be thought of as a data type just like a struct can.
 * `cout` is of type `ostream`, `ostream` is a class(see: [https://www.cplusplus.com/reference/iostream/cout/](https://www.cplusplus.com/reference/iostream/cout/))

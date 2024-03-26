@@ -15,7 +15,7 @@ public:
     for(int i=0;i<numToDisplay-1;++i){
       std::cout<<data[i]<<",";
     }
-    if(num<size){
+    if(numToDisplay<size){
       std::cout<<data[numToDisplay-1]<<"...)\n";
     }
     else{

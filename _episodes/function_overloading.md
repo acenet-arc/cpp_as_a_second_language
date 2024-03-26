@@ -14,9 +14,9 @@ keypoints:
 - "The `this` keyword allows you to explicitly reference the object within a member function."
 ---
 
-It might be nice to not always have a way to display only part of our vector, particularly if it is long.
+It might be nice to have a way to display only part of our vector, particularly if it is long.
 
-Function overloading allows you to declare multiple functions with the same name that are distinguished by the type and number of parameters passed to the function. We could overload our display function to take an extra `int` argument to maybe indicate how many elements we want it to output.
+Function overloading allows you to declare multiple functions with the same name that are distinguished by the type and number of parameters passed to the function. We could overload our display function to take an extra `int` argument to indicate how many elements we want to output.
 ~~~
 $ cp member_functions.cpp function_overload.cpp
 $ nano function_overload.cpp
@@ -42,7 +42,7 @@ public:
     for(int i=0;i<numToDisplay-1;++i){
       std::cout<<data[i]<<",";
     }
-    if(num<size){
+    if(numToDisplay<size){
       std::cout<<data[numToDisplay-1]<<"...)\n";
     }
     else{
