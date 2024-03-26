@@ -83,9 +83,9 @@ public:
   }
 };
 
-void nameAndDisplay(char* name,Displayable* v){
+void nameAndDisplay(const char* name,Displayable& v){
   std::cout<<name<<"=";
-  v->display();
+  v.display();
 }
 
 int main(){
@@ -93,10 +93,7 @@ int main(){
   a.data[0]=10;
   b.data[0]=22;
   Vector c=a+b;
-  char nameA[]={"a"};
-  nameAndDisplay(nameA,&a);
-  char nameB[]={"b"};
-  nameAndDisplay(nameB,&b);
-  char nameC[]={"c"};
-  nameAndDisplay(nameC,&c);
+  nameAndDisplay("a",a);
+  nameAndDisplay("b",b);
+  nameAndDisplay("c",c);
 }

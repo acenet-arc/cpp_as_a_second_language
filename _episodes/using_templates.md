@@ -30,9 +30,9 @@ $ nano stl_vector.cpp
 #include <iostream>
 #include <vector>
 
-void displayVector(std::vector<int>* vec){
-  for(int i=0;i<vec->size();++i){
-    std::cout<<(*vec)[i]<<" ";
+void displayVector(std::vector<int>& vec){
+  for(int i=0;i<vec.size();++i){
+    std::cout<<vec[i]<<" ";
   }
   std::cout<<"\n";
 };
@@ -42,7 +42,7 @@ int main(){
   a.push_back(0);
   a.push_back(1);
   a.push_back(2);
-  displayVector(&a);
+  displayVector(a);
 }
 ~~~
 [stl_vector.cpp](https://github.com/acenet-arc/cpp_as_a_second_language/blob/master/lesson_src/stl_vector.cpp)
@@ -59,7 +59,7 @@ $ ./stl_vector
 ~~~
 {: .output}
 
-The container `std::vector` is a template class. What this means is that when we have a line in our code like `std::vector<int>` and we compile the code, the compiler will create a vector class that works for `int` data types at compile time based on the template provided in the 'vector' header we included with `#include <vector>`. If we had multiple different lines with `std::vector<some type>` a new version would be created at compile time for each type. This means that compile times can get rather lengthy when templates are used heavily. However, putting this time and work into compile time can sometimes result in faster code at run time as different code paths are decided at compile time rather than run time. Depending on your situation fast, write, compile, test iterations might be important to you, or your priority might be to trade compile time for faster running executables.
+The container `std::vector` is a template class. What this means is that when we have a line in our code like `std::vector<int>` and we compile the code, the compiler will create a vector class that works for `int` data types at compile time based on the template provided in the 'vector' header we included with `#include <vector>`. If we had multiple different lines with `std::vector<some type>` a new version would be created at compile time for each type. This means that compile times can get rather lengthy when templates are used heavily. However, putting this time and work into compile time can sometimes result in faster code at run time as different code paths are decided at compile time rather than run time, as would be the case using inheritance with virtual functions. Depending on your situation fast, write > compile > test iterations might be important to you, or your priority might be to trade compile time for faster running executables.
 
 
 > ## Iterators
