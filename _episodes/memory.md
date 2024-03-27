@@ -16,8 +16,8 @@ keypoints:
 
 C and C++ are fairly low level languages and as such you can manage your program's memory yourself. This means that you can have great control over how much memory is used and when. With careful planning managing memory yourself can lead to lower memory usage and more performant code than in other languages which manage this for you. However, care must be take to avoid issues such as:
 1. memory leaks (memory allocated but not freed) which if inside some looping code could cause your program to run out of memory and crash
-2. writing outside of memory owned by your program (segmentation fault and crash)
-3. writing past array bounds but still into memory owned by your program (no crash, but possibly subtly unexpected result may occur)
+2. writing or reading outside of memory owned by your program (segmentation fault and crash)
+3. writing or reading past array bounds but still into memory owned by your program (no crash, but likely wrong results may occur)
 
 ## Allocation
 In C you use `malloc` to allocate memory, but in C++ you should use `new`. It is possible to use `malloc` but some additional steps need to be taken to ensure it works properly with C++ classes.
